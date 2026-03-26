@@ -1,0 +1,28 @@
+---
+description: Frontend UI, Tailwind, and interaction consistency
+globs: ["components/**/*", "app/**/*"]
+alwaysApply: true
+---
+
+## UI/UX
+
+- Clean, modern, minimal design
+- Monochrome palette (black/white/gray)
+- Strong typography focus
+
+## TAILWIND
+
+- Keep class names readable
+- Avoid long messy class chains
+- Extract reusable UI patterns
+
+## COMPONENTS
+
+- Reusable and composable
+- Keep logic out of UI when possible
+
+## INTERACTIONS
+
+- Smooth hover states
+- Micro-interactions on buttons and links
+- Consistent spacing and layout system

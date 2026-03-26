@@ -1,0 +1,33 @@
+---
+description: Enforce Next.js App Router best practices and performance
+globs: ["app/**/*", "components/**/*"]
+alwaysApply: true
+---
+
+## NEXT.JS RULES
+
+- Use App Router correctly
+- Default to Server Components
+- Use "use client" only when necessary
+
+## PERFORMANCE
+
+- Optimize images with next/image
+- Use dynamic imports when needed
+- Keep bundle size small
+
+## SEO
+
+- Use metadata properly
+- Use semantic HTML
+
+## STRUCTURE
+
+- app/ for routes
+- components/ for reusable UI
+- Keep logic separated from UI
+
+## STATIC EXPORT
+
+- Ensure compatibility with static export
+- Avoid server-only features

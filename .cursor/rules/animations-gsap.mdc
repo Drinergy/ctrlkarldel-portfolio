@@ -1,0 +1,23 @@
+---
+description: Enforce high-performance GSAP animations with professional patterns
+globs: ["components/**/*", "app/**/*"]
+alwaysApply: true
+---
+
+## GSAP CORE RULES
+
+- Use GSAP for all advanced animations (no CSS hacks for complex motion)
+- Always use gsap.context() in React/Next.js
+- Always clean up animations to prevent memory leaks
+
+Example pattern:
+
+```js
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    // animations here
+  });
+
+  return () => ctx.revert();
+}, []);
+```

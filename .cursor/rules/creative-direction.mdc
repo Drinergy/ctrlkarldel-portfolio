@@ -1,0 +1,65 @@
+---
+description: Enforce a unique, non-template creative direction and visual identity
+globs: ["app/**/*", "components/**/*"]
+alwaysApply: true
+---
+
+## CORE IDENTITY
+
+- This is NOT a template portfolio
+- It must feel like a designed experience
+- It should be memorable within 5 seconds
+
+## STYLE
+
+- Strict monochrome (black, white, grayscale)
+- Use contrast, spacing, and motion instead of color
+- Bold typography is a primary visual element
+
+## LAYOUT RULES
+
+- Avoid predictable layouts
+- Use asymmetry and broken grids
+- Allow overlapping elements when clean
+
+## VISUAL ELEMENTS
+
+- Use:
+  - Grain/noise texture
+  - Subtle grid systems
+  - Lines/dividers
+- Avoid:
+  - Generic gradients
+  - Stock UI patterns
+
+## HERO SECTION
+
+- Must feel like a statement
+- Large typography
+- Immediate impact
+- Animated entrance
+
+## PROJECTS
+
+- Not a grid of boring cards
+- Each project should feel interactive
+- Use motion and layout variation
+
+## UNIQUENESS RULE
+
+If it looks like a common portfolio template → reject it and redesign.
+
+## GOAL
+
+Make the site feel like a premium product or digital art piece.
+
+## FINAL STANDARD
+
+- This portfolio must stand out publicly
+- It should feel like an award-winning site
+- It must NOT resemble a template
+- Every section should feel intentional and crafted
+
+If a solution is generic → improve it
+If an interaction is basic → enhance it
+If motion is missing → add it thoughtfully

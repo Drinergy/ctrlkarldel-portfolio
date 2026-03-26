@@ -1,0 +1,52 @@
+---
+description: Define a cinematic motion system with consistent animation language
+globs: ["components/**/*", "app/**/*"]
+alwaysApply: true
+---
+
+## MOTION PHILOSOPHY
+
+- Motion must feel intentional, cinematic, and premium
+- Every animation should have purpose and hierarchy
+- Avoid randomness — define a consistent motion language
+
+## TIMING SYSTEM
+
+- Fast: 0.2s – micro interactions
+- Medium: 0.4–0.6s – UI transitions
+- Slow: 0.8–1.2s – hero / page animations
+
+## EASING SYSTEM
+
+- Default: power2.out
+- Entrance: power3.out
+- Dramatic: expo.out
+- Never use linear easing
+
+## ENTRANCE PATTERNS
+
+- Fade + translate (y: 20–60)
+- Stagger children elements
+- Animate opacity + transform only
+
+## SCROLL SYSTEM
+
+- Use ScrollTrigger with restraint
+- Prefer reveal-on-scroll over constant animation
+- Avoid scroll fatigue
+
+## LAYERING
+
+- Use depth:
+  - Background (slow movement)
+  - Mid layer (normal)
+  - Foreground (interactive)
+
+## PARALLAX
+
+- Subtle only (never extreme)
+- Different speeds for depth illusion
+
+## RULE
+
+Motion should feel like a film, not a website.

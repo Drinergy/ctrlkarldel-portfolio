@@ -1,0 +1,56 @@
+---
+description: Advanced interaction system including cursor, hover, and micro-interactions
+globs: ["components/**/*", "app/**/*"]
+alwaysApply: true
+---
+
+## CURSOR SYSTEM
+
+- Replace default cursor when appropriate
+- Use custom cursor with:
+  - Scale changes
+  - Text hints (e.g., "View", "Open")
+- Cursor should react to interactive elements
+
+## MAGNETIC ELEMENTS
+
+- Buttons and links should have magnetic pull
+- Movement must be subtle and responsive
+
+## HOVER SYSTEM
+
+- Every interactive element must respond to hover
+- Use:
+  - Scale
+  - Translate
+  - Opacity
+- Avoid default browser behavior
+
+## CLICK FEEDBACK
+
+- Add subtle press animation
+- Provide tactile feel
+
+## TRANSITIONS
+
+- No abrupt changes
+- Everything transitions smoothly
+
+## NAVIGATION
+
+- Avoid basic navbars
+- Consider:
+  - Overlay menu
+  - Animated transitions
+  - Minimal UI
+
+## MICRO-INTERACTIONS
+
+- Small details matter:
+  - Link underline animations
+  - Button movement
+  - Section transitions
+
+## RULE
+
+The site should feel alive and responsive to the user.
