@@ -163,12 +163,23 @@ export default function ProjectModal({
 
     const prevOverflow = document.body.style.overflow;
     const prevPaddingRight = document.body.style.paddingRight;
+    const prevBodyPosition = document.body.style.position;
+    const prevBodyTop = document.body.style.top;
+    const prevBodyWidth = document.body.style.width;
+    const prevBodyTouchAction = document.body.style.touchAction;
     const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevHtmlOverscrollBehavior = document.documentElement.style.overscrollBehavior;
+    const scrollY = window.scrollY;
 
     // Lock scroll without shifting layout (scrollbar compensation).
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.overscrollBehavior = "none";
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+    document.body.style.touchAction = "none";
     if (scrollbarWidth > 0) {
       document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
@@ -176,8 +187,14 @@ export default function ProjectModal({
 
     return () => {
       document.documentElement.style.overflow = prevHtmlOverflow;
+      document.documentElement.style.overscrollBehavior = prevHtmlOverscrollBehavior;
       document.body.style.overflow = prevOverflow;
       document.body.style.paddingRight = prevPaddingRight;
+      document.body.style.position = prevBodyPosition;
+      document.body.style.top = prevBodyTop;
+      document.body.style.width = prevBodyWidth;
+      document.body.style.touchAction = prevBodyTouchAction;
+      window.scrollTo(0, scrollY);
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [requestClose]);
@@ -196,11 +213,11 @@ export default function ProjectModal({
         onClick={requestClose}
       />
 
-      <div className="relative h-full overflow-y-auto overscroll-contain p-3 [-webkit-overflow-scrolling:touch] sm:p-6">
-        <div className="mx-auto flex min-h-full w-full max-w-2xl items-start py-3 sm:items-center sm:py-0">
+      <div className="relative h-full overflow-y-auto overscroll-contain p-3 touch-pan-y [-webkit-overflow-scrolling:touch] sm:p-6">
+        <div className="mx-auto flex min-h-full w-full max-w-2xl items-start py-3 sm:py-4">
           <div
             ref={modalRef}
-            className="w-full max-h-[calc(100svh-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-black/80 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] [-webkit-overflow-scrolling:touch] sm:max-h-[calc(100svh-3rem)] sm:p-6 md:p-8"
+            className="w-full rounded-2xl border border-white/10 bg-black/80 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] sm:p-6 md:p-8"
           >
             <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-6">
               <div className="space-y-2">
