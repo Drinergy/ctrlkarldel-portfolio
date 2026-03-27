@@ -6,13 +6,8 @@ export const metadata: Metadata = {
   description: "Resume — view and download as PDF.",
 };
 
-export default async function ResumeRoute({
-  searchParams,
-}: Readonly<{
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}>) {
-  const sp = searchParams ? await searchParams : undefined;
-  const autoPrint = sp?.print === "1";
-  return <ResumePage autoPrint={autoPrint} />;
+/** Static export: no searchParams on server — print=1 is handled in `ResumeActions` (client). */
+export default function ResumeRoute() {
+  return <ResumePage />;
 }
 

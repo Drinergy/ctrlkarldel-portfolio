@@ -19,11 +19,7 @@ function Divider() {
   return <div className="h-px w-full bg-white/10" aria-hidden="true" />;
 }
 
-export default function ResumePage({
-  autoPrint,
-}: Readonly<{
-  autoPrint?: boolean;
-}>) {
+export default function ResumePage() {
   const header = {
     name: "ctrlkarldel",
     title: "Software Engineer",
@@ -104,7 +100,7 @@ export default function ResumePage({
               </div>
             </div>
 
-            <ResumeActions autoPrint={autoPrint} variant="downloadOnly" />
+            <ResumeActions variant="downloadOnly" />
           </div>
 
           <div className="mt-8">

@@ -5,20 +5,18 @@ import MagneticButton from "@/components/cursor/MagneticButton";
 import { useReducedMotion } from "@/components/gsap/useReducedMotion";
 
 export default function ResumeActions({
-  autoPrint,
   variant = "default",
 }: Readonly<{
-  autoPrint?: boolean;
   variant?: "default" | "downloadOnly";
 }>) {
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!autoPrint) return;
-    // Let layout settle before invoking print dialog.
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("print") !== "1") return;
     const t = window.setTimeout(() => window.print(), reducedMotion ? 50 : 250);
     return () => window.clearTimeout(t);
-  }, [autoPrint, reducedMotion]);
+  }, [reducedMotion]);
 
   return (
     <div className="flex flex-wrap gap-3" data-no-print>
