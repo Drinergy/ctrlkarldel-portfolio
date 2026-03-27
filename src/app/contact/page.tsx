@@ -58,24 +58,22 @@ export default function ContactPage() {
             </div>
             <div className="min-w-0 lg:col-span-5">
               <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
-                <div className="flex flex-col gap-6 sm:gap-7">
-                  <ScrollReveal>
+                <ScrollReveal>
+                  <div className="flex flex-col gap-4 sm:gap-5">
                     <MagneticButton
                       href={`mailto:${email}`}
                       className="w-full rounded-full border border-white/20 bg-black/30 px-8 py-4 text-center font-mono text-[13px] tracking-[0.22em] text-foreground/85"
                     >
                       EMAIL_ME
                     </MagneticButton>
-                  </ScrollReveal>
-                  <ScrollReveal>
                     <MagneticButton
                       href="/projects"
                       className="w-full rounded-full border border-white/10 bg-white/0 px-8 py-4 text-center font-mono text-[13px] tracking-[0.22em] text-foreground/80"
                     >
                       VIEW_PROJECTS
                     </MagneticButton>
-                  </ScrollReveal>
-                </div>
+                  </div>
+                </ScrollReveal>
               </div>
             </div>
           </div>

@@ -200,11 +200,11 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    <div className="mt-4 flex flex-col gap-1.5 border-t border-white/10 pt-3 font-mono text-[8px] leading-snug tracking-[0.1em] text-foreground/72 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:text-[11px] md:tracking-[0.2em]">
-                      <span className="min-w-0 max-w-full [overflow-wrap:anywhere]">
+                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-3 font-mono text-[8px] leading-none tracking-[0.08em] text-foreground/72 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:text-[11px] md:tracking-[0.2em]">
+                      <span className="min-w-0 whitespace-nowrap">
                         SCROLL_TO_EXPLORE
                       </span>
-                      <span className="min-w-0 max-w-full text-accent [overflow-wrap:anywhere] sm:shrink-0 sm:text-right">
+                      <span className="shrink-0 whitespace-nowrap text-right text-accent">
                         AVAILABLE_FOR_WORK
                       </span>
                     </div>
