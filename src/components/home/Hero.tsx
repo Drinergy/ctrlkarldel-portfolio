@@ -67,9 +67,12 @@ export default function Hero() {
   );
 
   return (
-    <section ref={scopeRef} className="relative overflow-hidden px-4 pt-8 sm:px-6 sm:pt-10">
+    <section
+      ref={scopeRef}
+      className="page-pad-x relative overflow-hidden pt-8 pb-10 sm:pt-10 sm:pb-12"
+    >
       <div className="mx-auto w-full min-w-0 max-w-6xl">
-        <div className="grid min-w-0 gap-10 lg:grid-cols-12 lg:items-end">
+        <div className="grid min-w-0 gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="min-w-0 lg:col-span-7">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-surface/40 px-4 py-2">
               <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
@@ -171,8 +174,8 @@ export default function Hero() {
                 }}
               />
 
-              <div className="absolute inset-3 z-10 flex min-h-0 flex-col justify-end sm:inset-5 md:inset-6">
-                <div className="max-h-full min-h-0 w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:p-5">
+              <div className="absolute inset-3 z-10 overflow-hidden sm:inset-5 md:inset-6">
+                <div className="h-full min-h-0 touch-pan-y overflow-y-auto overflow-x-hidden overscroll-y-contain rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:p-5">
                   <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/60 sm:text-[11px] sm:tracking-[0.28em]">
                     WHAT_I_BUILD
                   </div>

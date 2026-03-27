@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="px-6 pb-24 pt-12 md:pt-14">
+    <main className="page-pad-x pb-24 pt-12 md:pt-14">
       <div className="mx-auto w-full max-w-6xl">
         <section className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-12">
           <ScrollReveal>

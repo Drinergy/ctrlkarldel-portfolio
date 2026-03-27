@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -159,6 +159,28 @@ export default function HorizontalProjects({
   const [fromRect, setFromRect] = useState<RectLike | null>(null);
   const lastFocusRef = useRef<HTMLElement | null>(null);
 
+  const closeModal = useCallback(() => {
+    setActiveProject(null);
+    setFromRect(null);
+  }, []);
+
+  useEffect(() => {
+    if (activeProject !== null) return;
+    const el = lastFocusRef.current;
+    if (!el) return;
+    let cancelled = false;
+    const id1 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (cancelled) return;
+        el.focus({ preventScroll: true });
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(id1);
+    };
+  }, [activeProject]);
+
   useGSAP(
     () => {
       registerGsapPlugins();
@@ -207,7 +229,7 @@ export default function HorizontalProjects({
 
   return (
     <section ref={scopeRef} className="relative mt-16 overflow-hidden pt-14 sm:mt-24 sm:pt-20 md:pt-28">
-      <div className="px-4 sm:px-6">
+      <div className="page-pad-x">
         <div className="mx-auto w-full min-w-0 max-w-6xl">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
             <div className="min-w-0">
@@ -231,7 +253,7 @@ export default function HorizontalProjects({
       <div className="mt-8 sm:mt-10">
         <div
           ref={trackRef}
-          className="flex flex-col gap-6 px-4 will-change-transform md:min-h-[28rem] md:flex-row md:items-stretch md:gap-8 md:px-6"
+          className="page-pad-x flex flex-col gap-6 will-change-transform md:min-h-[28rem] md:flex-row md:items-stretch md:gap-8"
           style={{ transform: "translate3d(0,0,0)" }}
         >
           <div
@@ -259,15 +281,7 @@ export default function HorizontalProjects({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
 
       {activeProject && fromRect ? (
-        <ProjectModal
-          project={activeProject}
-          fromRect={fromRect}
-          onClose={() => {
-            setActiveProject(null);
-            setFromRect(null);
-            lastFocusRef.current?.focus?.();
-          }}
-        />
+        <ProjectModal project={activeProject} fromRect={fromRect} onClose={closeModal} />
       ) : null}
     </section>
   );

@@ -28,6 +28,47 @@ body {
     "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
+/*
+ * Responsive horizontal gutter + safe-area insets.
+ * Works on phones, tablets, notched desktops, foldables, PWA — anywhere env() is supported.
+ */
+.page-pad-x {
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 640px) {
+  .page-pad-x {
+    padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 768px) {
+  .page-pad-x {
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-pad-x {
+    padding-left: max(2.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-pad-x {
+    padding-left: max(3rem, env(safe-area-inset-left, 0px));
+    padding-right: max(3rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+.page-pad-b {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+}
+
 /* Hide scrollbars (keep scrolling) for immersion. */
 html,
 body {
@@ -48,6 +89,12 @@ html.has-custom-cursor * {
 }
 
 @media print {
+  /* Resume route: strip screen gutters for clean PDF margins (@page handles paper). */
+  .resume-print.page-pad-x {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   /* Remove dark UI chrome and overlays in print/PDF. */
   html,
   body {

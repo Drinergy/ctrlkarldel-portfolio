@@ -84,7 +84,7 @@ export default function ResumePage() {
   ] as const;
 
   return (
-    <main className="resume-print min-w-0 px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-10 print:px-0 print:pb-0 print:pt-0">
+    <main className="resume-print page-pad-x min-w-0 pb-20 pt-8 sm:pb-24 sm:pt-10 print:px-0 print:pb-0 print:pt-0">
       <div className="mx-auto w-full min-w-0 max-w-5xl print:max-w-none">
         <div className="rounded-3xl bg-white/[0.02] p-4 sm:p-6 md:p-10 print:rounded-none print:bg-white print:p-0 print:text-black print:shadow-none">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">

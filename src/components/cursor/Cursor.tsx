@@ -173,7 +173,7 @@ export default function Cursor() {
   }, [label, mode, reducedMotion]);
 
   return (
-    <div ref={scopeRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-[60]">
+    <div ref={scopeRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-[110]">
       <div
         ref={haloRef}
         className="absolute left-0 top-0 h-[84px] w-[84px] rounded-full border border-white/10 opacity-0"

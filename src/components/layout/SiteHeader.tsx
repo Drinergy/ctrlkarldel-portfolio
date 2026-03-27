@@ -39,7 +39,7 @@ export default function SiteHeader() {
 
   return (
     <header className="relative z-20 w-full">
-      <div className="mx-auto flex w-full min-w-0 max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6 sm:py-6">
+      <div className="page-pad-x mx-auto flex w-full min-w-0 max-w-6xl items-center justify-between gap-4 py-5 sm:py-6">
         <GsapLink
           href="/"
           className="inline-flex min-w-0 max-w-[min(100%,14rem)] items-center gap-3 truncate font-mono text-[10px] tracking-[0.22em] text-foreground/80 hover:text-foreground sm:max-w-none sm:text-[11px] sm:tracking-[0.28em]"

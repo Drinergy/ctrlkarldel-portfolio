@@ -163,7 +163,7 @@ export default function CustomCursor() {
   }, [label, mode]);
 
   return (
-    <div ref={scopeRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-[60]">
+    <div ref={scopeRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-[110]">
       <div
         ref={cursorRingRef}
         className="absolute left-0 top-0 h-7 w-7 rounded-full border border-white/75 opacity-0"

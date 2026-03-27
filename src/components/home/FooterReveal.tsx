@@ -45,7 +45,7 @@ export default function FooterReveal() {
   );
 
   return (
-    <section ref={scopeRef} className="relative px-4 pb-8 sm:px-6 sm:pb-10">
+    <section ref={scopeRef} className="page-pad-x relative pb-8 sm:pb-10">
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         {/* Spacer so the footer feels “behind” the page */}
         <div className="h-[38vh]" aria-hidden="true" />
@@ -53,7 +53,7 @@ export default function FooterReveal() {
 
       <div
         ref={footerRef}
-        className="sticky bottom-0 mx-auto w-full max-w-6xl rounded-t-3xl border border-white/10 bg-surface/80 px-4 py-8 backdrop-blur-[6px] sm:px-6 sm:py-10"
+        className="page-pad-x sticky bottom-0 mx-auto w-full max-w-6xl rounded-t-3xl border border-white/10 bg-surface/80 py-8 backdrop-blur-[6px] sm:py-10"
       >
         <div
           aria-hidden="true"

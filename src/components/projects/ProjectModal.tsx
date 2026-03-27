@@ -32,13 +32,15 @@ export default function ProjectModal({
 }>) {
   const reducedMotion = useReducedMotion();
   const rootRef = useRef<HTMLDivElement | null>(null);
+  /** GSAP transform target (must not be the overflow scroll node — fixes iOS scroll). */
+  const animRef = useRef<HTMLDivElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const introTlRef = useRef<gsap.core.Timeline | null>(null);
 
   const [closing, setClosing] = useState(false);
-  const toRectRef = useRef<DOMRect | null>(null);
   const closingRef = useRef(false);
   useEffect(() => {
     closingRef.current = closing;
@@ -50,12 +52,14 @@ export default function ProjectModal({
       return;
     }
 
-    const modalEl = modalRef.current;
+    const animEl = animRef.current;
     const overlayEl = overlayRef.current;
-    if (!modalEl || !overlayEl) return;
+    const contentEl = contentRef.current;
+    if (!animEl || !overlayEl) return;
 
-    const toRect = modalEl.getBoundingClientRect();
-    toRectRef.current = toRect;
+    gsap.killTweensOf([animEl, overlayEl, contentEl].filter(Boolean));
+
+    const toRect = animEl.getBoundingClientRect();
 
     const dx = fromRect.left - toRect.left;
     const dy = fromRect.top - toRect.top;
@@ -63,34 +67,44 @@ export default function ProjectModal({
     const sy = fromRect.height / toRect.height;
 
     gsap.set(overlayEl, { autoAlpha: 0 });
-    gsap.set(modalEl, { x: dx, y: dy, scaleX: sx, scaleY: sy });
+    gsap.set(animEl, {
+      transformOrigin: "50% 50%",
+      x: dx,
+      y: dy,
+      scaleX: sx,
+      scaleY: sy,
+    });
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-      tl.to(overlayEl, { autoAlpha: 1, duration: 0.22 });
-      tl.to(
-        modalEl,
-        {
-          x: 0,
-          y: 0,
-          scaleX: 1,
-          scaleY: 1,
-          duration: 0.65,
-        },
-        "-=0.05",
+    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+    introTlRef.current = tl;
+    tl.to(overlayEl, { autoAlpha: 1, duration: 0.22 });
+    tl.to(
+      animEl,
+      {
+        x: 0,
+        y: 0,
+        scaleX: 1,
+        scaleY: 1,
+        duration: 0.65,
+      },
+      "-=0.05",
+    );
+    if (contentEl) {
+      tl.fromTo(
+        contentEl,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+        "-=0.5",
       );
-      if (contentRef.current) {
-        gsap.fromTo(
-          contentRef.current,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
-        );
-      }
-    }, rootRef);
+    }
 
     closeBtnRef.current?.focus();
 
-    return () => ctx.revert();
+    return () => {
+      tl.kill();
+      if (introTlRef.current === tl) introTlRef.current = null;
+      gsap.killTweensOf([animEl, overlayEl, contentEl].filter(Boolean));
+    };
   }, [fromRect, project.title, reducedMotion]);
 
   const requestClose = useCallback(() => {
@@ -103,23 +117,34 @@ export default function ProjectModal({
       return;
     }
 
-    const modalEl = modalRef.current;
+    const animEl = animRef.current;
     const overlayEl = overlayRef.current;
-    const toRect = toRectRef.current;
-    if (!modalEl || !overlayEl || !toRect) {
+    if (!animEl || !overlayEl) {
       onClose();
       return;
     }
+
+    // Measure now — centering + scroll change the rect after open; stale refs break the exit.
+    const toRect = animEl.getBoundingClientRect();
+    if (toRect.width < 1 || toRect.height < 1) {
+      onClose();
+      return;
+    }
+
+    introTlRef.current?.kill();
+    introTlRef.current = null;
+    const contentEl = contentRef.current;
+    gsap.killTweensOf([animEl, overlayEl, contentEl].filter(Boolean));
 
     const dx = fromRect.left - toRect.left;
     const dy = fromRect.top - toRect.top;
     const sx = fromRect.width / toRect.width;
     const sy = fromRect.height / toRect.height;
 
-    const tl = gsap.timeline({ defaults: { ease: "expo.in" } });
+    const tl = gsap.timeline({ defaults: { ease: "expo.in", overwrite: "auto" } });
     tl.to(overlayEl, { autoAlpha: 0, duration: 0.22 });
     tl.to(
-      modalEl,
+      animEl,
       {
         x: dx,
         y: dy,
@@ -129,10 +154,44 @@ export default function ProjectModal({
       },
       "-=0.1",
     );
-    tl.set(modalEl, { clearProps: "transform" });
+    tl.set(animEl, { clearProps: "transform" });
     tl.set(overlayEl, { clearProps: "opacity" });
     tl.eventCallback("onComplete", () => onClose());
   }, [fromRect, onClose, reducedMotion]);
+
+  // Layout: lock/unlock synchronously so scroll restores before paint (avoids jank with pinned sections).
+  useLayoutEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+    const prevBodyPosition = document.body.style.position;
+    const prevBodyTop = document.body.style.top;
+    const prevBodyWidth = document.body.style.width;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevHtmlOverscrollBehavior = document.documentElement.style.overscrollBehavior;
+    const scrollY = window.scrollY;
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.overscrollBehavior = "none";
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.documentElement.style.overscrollBehavior = prevHtmlOverscrollBehavior;
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+      document.body.style.position = prevBodyPosition;
+      document.body.style.top = prevBodyTop;
+      document.body.style.width = prevBodyWidth;
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -161,60 +220,28 @@ export default function ProjectModal({
       }
     };
 
-    const prevOverflow = document.body.style.overflow;
-    const prevPaddingRight = document.body.style.paddingRight;
-    const prevBodyPosition = document.body.style.position;
-    const prevBodyTop = document.body.style.top;
-    const prevBodyWidth = document.body.style.width;
-    const prevBodyTouchAction = document.body.style.touchAction;
-    const prevHtmlOverflow = document.documentElement.style.overflow;
-    const prevHtmlOverscrollBehavior = document.documentElement.style.overscrollBehavior;
-    const scrollY = window.scrollY;
-
-    // Lock scroll without shifting layout (scrollbar compensation).
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.overflow = "hidden";
-    document.documentElement.style.overscrollBehavior = "none";
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
-    document.body.style.touchAction = "none";
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
     window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.documentElement.style.overflow = prevHtmlOverflow;
-      document.documentElement.style.overscrollBehavior = prevHtmlOverscrollBehavior;
-      document.body.style.overflow = prevOverflow;
-      document.body.style.paddingRight = prevPaddingRight;
-      document.body.style.position = prevBodyPosition;
-      document.body.style.top = prevBodyTop;
-      document.body.style.width = prevBodyWidth;
-      document.body.style.touchAction = prevBodyTouchAction;
-      window.scrollTo(0, scrollY);
-      window.removeEventListener("keydown", onKeyDown);
-    };
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [requestClose]);
 
   const ui = (
     <div
       ref={rootRef}
-      className="fixed inset-0 z-50"
+      className="fixed inset-0 z-[100]"
       role="dialog"
       aria-modal="true"
       aria-label={`${project.title} details`}
     >
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-black/70 opacity-0"
+        className="absolute inset-0 z-0 touch-none bg-black/70 opacity-0"
         onClick={requestClose}
       />
 
-      <div className="relative h-full overflow-y-auto overscroll-contain p-3 touch-pan-y [-webkit-overflow-scrolling:touch] sm:p-6">
-        <div className="mx-auto flex min-h-full w-full max-w-2xl items-start py-3 sm:py-4">
+      {/* Full-viewport overflow layer — flex-based scroll is unreliable on iOS; this pattern scrolls. */}
+      <div className="absolute inset-0 z-10 overflow-y-auto overflow-x-hidden overscroll-y-contain [-webkit-overflow-scrolling:touch] [touch-action:pan-y]">
+        <div className="flex min-h-full flex-col justify-center px-3 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:px-6 sm:pb-6 sm:pt-6">
+          <div ref={animRef} className="mx-auto w-full max-w-2xl shrink-0 pb-6">
           <div
             ref={modalRef}
             className="w-full rounded-2xl border border-white/10 bg-black/80 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] sm:p-6 md:p-8"
@@ -305,6 +332,7 @@ export default function ProjectModal({
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

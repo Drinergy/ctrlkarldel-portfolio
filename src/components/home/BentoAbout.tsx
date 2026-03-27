@@ -123,7 +123,7 @@ export default function BentoAbout() {
   );
 
   return (
-    <section ref={scopeRef} className="relative mt-16 px-4 pb-20 sm:mt-24 sm:px-6 sm:pb-24">
+    <section ref={scopeRef} className="page-pad-x relative mt-16 pb-20 sm:mt-24 sm:pb-24">
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="min-w-0">

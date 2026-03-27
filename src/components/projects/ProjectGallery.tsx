@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/components/gsap/useReducedMotion";
@@ -27,6 +27,28 @@ export default function ProjectGallery({
   const [activeProject, setActiveProject] = useState<PortfolioProject | null>(null);
   const [fromRect, setFromRect] = useState<RectLike | null>(null);
   const lastFocusRef = useRef<HTMLElement | null>(null);
+
+  const closeModal = useCallback(() => {
+    setActiveProject(null);
+    setFromRect(null);
+  }, []);
+
+  useEffect(() => {
+    if (activeProject !== null) return;
+    const el = lastFocusRef.current;
+    if (!el) return;
+    let cancelled = false;
+    const id1 = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (cancelled) return;
+        el.focus({ preventScroll: true });
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(id1);
+    };
+  }, [activeProject]);
 
   useEffect(() => {
     registerGsapPlugins();
@@ -78,15 +100,7 @@ export default function ProjectGallery({
       </div>
 
       {activeProject && fromRect ? (
-        <ProjectModal
-          project={activeProject}
-          fromRect={fromRect}
-          onClose={() => {
-            setActiveProject(null);
-            setFromRect(null);
-            lastFocusRef.current?.focus?.();
-          }}
-        />
+        <ProjectModal project={activeProject} fromRect={fromRect} onClose={closeModal} />
       ) : null}
     </>
   );

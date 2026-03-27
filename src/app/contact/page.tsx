@@ -13,7 +13,7 @@ export default function ContactPage() {
   const email = portfolioContent.contact.email;
 
   return (
-    <main className="min-w-0 px-4 pb-24 pt-12 sm:px-6 md:pt-14">
+    <main className="page-pad-x min-w-0 pb-24 pt-12 md:pt-14">
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         <section className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-12">
           <ScrollReveal>
