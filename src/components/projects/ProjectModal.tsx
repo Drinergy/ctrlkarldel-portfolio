@@ -192,7 +192,7 @@ export default function ProjectModal({
       />
 
       {/* Scroll layer — plain block child so iOS Safari scrolls reliably. No flex/table centering. */}
-      <div className="absolute inset-0 z-10 overflow-y-auto overflow-x-hidden overscroll-y-contain [-webkit-overflow-scrolling:touch] [touch-action:pan-y]">
+      <div className="absolute inset-0 z-10 h-[100svh] overflow-y-scroll overflow-x-hidden overscroll-y-contain [-webkit-overflow-scrolling:touch] [touch-action:pan-y]">
         <div
           ref={animRef}
           className="mx-auto w-full max-w-2xl px-3 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:px-6 sm:pb-6 sm:pt-6 md:py-[8vh]"
