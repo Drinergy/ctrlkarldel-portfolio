@@ -161,7 +161,6 @@ export default function ProjectModal({
 
   // Layout: lock/unlock synchronously so scroll restores before paint (avoids jank with pinned sections).
   useLayoutEffect(() => {
-    const prevOverflow = document.body.style.overflow;
     const prevPaddingRight = document.body.style.paddingRight;
     const prevBodyPosition = document.body.style.position;
     const prevBodyTop = document.body.style.top;
@@ -170,9 +169,10 @@ export default function ProjectModal({
     const scrollY = window.scrollY;
 
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    // Do NOT set html overflow:hidden — iOS Safari uses it to block ALL child overflow-y:auto scroll contexts.
+    // body position:fixed alone prevents background scroll on all browsers.
+    // Do NOT set overflow:hidden on body or html — iOS Safari uses those to block ALL child scroll contexts,
+    // including the modal's own overflow-y:auto scroll layer.
     document.documentElement.style.overscrollBehavior = "none";
-    document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = "100%";
@@ -182,7 +182,6 @@ export default function ProjectModal({
 
     return () => {
       document.documentElement.style.overscrollBehavior = prevHtmlOverscrollBehavior;
-      document.body.style.overflow = prevOverflow;
       document.body.style.paddingRight = prevPaddingRight;
       document.body.style.position = prevBodyPosition;
       document.body.style.top = prevBodyTop;
