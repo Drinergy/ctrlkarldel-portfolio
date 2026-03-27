@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Monochrome GSAP Portfolio (Next.js + Tailwind)
 
-## Getting Started
+Modern developer portfolio built with Next.js (App Router), Tailwind CSS, and GSAP-level interactions. Designed to be hosted via static export.
 
-First, run the development server:
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Static Export
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Static export is configured via `output: "export"` in `next.config.ts`.
 
-## Learn More
+```bash
+npm run export
+```
 
-To learn more about Next.js, take a look at the following resources:
+The output will be written to `./out/` (generated during `next build`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All portfolio copy comes from:
 
-## Deploy on Vercel
+- `src/components/content/portfolio-content.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Update:
+- `name`, `role`, `tagline`, `about[]`, `skills[]`
+- `projects[]` (used by the `/projects` gallery + previews)
+- `contact.email` and `contact.location`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Animation System (Where to edit)
+
+GSAP helpers and primitives:
+- `src/lib/gsap.ts` (client-safe plugin registration)
+- `src/components/gsap/RevealText.tsx` (word-by-word + line grouping reveals)
+- `src/components/gsap/ScrollReveal.tsx` (scroll-triggered section reveals)
+
+Premium interactions:
+- `src/components/layout/RouteTransition.tsx` (cinematic route overlay transition)
+- `src/components/cursor/CustomCursor.tsx` (cursor follower)
+- `src/components/noise/NoiseOverlay.tsx` (subtle animated grain overlay)
+- `src/components/projects/*` (project gallery cards + GSAP modal)
+
+## Accessibility / Performance Notes
+
+- Reduced-motion is detected and animations are simplified/disabled accordingly.
+- Animations are implemented in client components and scoped with `gsap.context()` for safer cleanup.
+

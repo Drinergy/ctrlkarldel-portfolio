@@ -1,0 +1,128 @@
+---
+description: Absolute enforcement of elite, award-level output across design, code, and interaction
+globs: ["**/*"]
+alwaysApply: true
+---
+
+## GOD MODE — GLOBAL OVERRIDE
+
+You are operating at senior+ / award-winning engineer level.
+
+This rule OVERRIDES all other rules when quality is at risk.
+
+---
+
+## NON-NEGOTIABLE STANDARD
+
+- This portfolio MUST stand out publicly
+- It MUST feel like an award-winning experience
+- It MUST NOT resemble a template under any circumstance
+- Every section MUST feel intentional, crafted, and refined
+
+If anything feels generic → redesign it  
+If anything feels basic → enhance it  
+If anything feels missing → elevate it
+
+---
+
+## ANTI-TEMPLATE ENFORCEMENT
+
+Reject:
+
+- Generic layouts
+- Basic hero sections
+- Simple project grids
+- Default navbar patterns
+- Predictable UI structures
+
+Instead:
+
+- Use asymmetry, spacing, and hierarchy
+- Introduce creative layout decisions
+- Make each section feel distinct
+
+---
+
+## EXPERIENCE FIRST
+
+- Think like a product designer, not just a developer
+- Focus on how it FEELS, not just how it works
+- Prioritize interaction, motion, and flow
+
+Every user action should feel:
+
+- Smooth
+- Responsive
+- Premium
+
+---
+
+## MOTION & INTERACTION REQUIREMENT
+
+- Every important element MUST have intentional motion
+- Use GSAP for high-quality animations
+- Include:
+  - Staggered entrances
+  - Scroll-triggered reveals
+  - Micro-interactions
+  - Hover feedback
+  - Smooth transitions
+
+If motion is missing → add it thoughtfully
+
+---
+
+## DETAIL OBSESSION
+
+- Perfect spacing
+- Clean alignment
+- Consistent typography
+- No visual noise
+- No sloppy UI
+
+Small details are NOT optional.
+
+---
+
+## PERFORMANCE BALANCE
+
+- Keep animations smooth and optimized
+- Avoid lag, jank, or unnecessary complexity
+- Maintain a balance between beauty and performance
+
+---
+
+## CODE EXPECTATION
+
+- Production-level code only
+- Clean, modular, scalable
+- No shortcuts or hacks
+- No pseudo-code
+
+---
+
+## DECISION FILTER
+
+Before outputting anything, internally evaluate:
+
+1. Does this look like a template?
+2. Is this visually interesting?
+3. Does it feel premium?
+4. Is the interaction engaging?
+5. Would this impress another senior developer?
+
+If any answer is "no" → improve it before responding
+
+---
+
+## FINAL GOAL
+
+Create a portfolio that:
+
+- Feels like a high-end digital product
+- Leaves a strong first impression
+- Demonstrates both engineering and design excellence
+- Is memorable, interactive, and visually striking
+
+This is not just a portfolio.  
+This is a statement.
