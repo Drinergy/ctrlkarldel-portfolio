@@ -48,6 +48,12 @@ export default function ProjectModal({
 
   useLayoutEffect(() => {
     if (reducedMotion) {
+      const animEl = animRef.current;
+      const overlayEl = overlayRef.current;
+      const contentEl = contentRef.current;
+      if (animEl) gsap.set(animEl, { opacity: 1, clearProps: "opacity" });
+      if (overlayEl) gsap.set(overlayEl, { autoAlpha: 1, clearProps: "opacity,visibility" });
+      if (contentEl) gsap.set(contentEl, { opacity: 1, clearProps: "opacity" });
       closeBtnRef.current?.focus();
       return;
     }
@@ -63,13 +69,14 @@ export default function ProjectModal({
     // to avoid Chrome glitches when source cards are inside transformed/pinned sections.
     void fromRect;
     gsap.set(overlayEl, { autoAlpha: 0 });
-    gsap.set(animEl, { opacity: 0 });
+    // Never fade the modal wrapper itself; keep it solid to avoid rare Chrome cases
+    // where wrapper opacity can get stuck < 1 inside pinned/transformed contexts.
+    gsap.set(animEl, { opacity: 1, clearProps: "opacity" });
     if (contentEl) gsap.set(contentEl, { opacity: 0 });
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     introTlRef.current = tl;
     tl.to(overlayEl, { autoAlpha: 1, duration: 0.2 }, 0);
-    tl.to(animEl, { opacity: 1, duration: 0.28 }, 0);
     if (contentEl) {
       tl.to(contentEl, { opacity: 1, duration: 0.22 }, 0.06);
     }
