@@ -59,43 +59,19 @@ export default function ProjectModal({
 
     gsap.killTweensOf([animEl, overlayEl, contentEl].filter(Boolean));
 
-    const toRect = animEl.getBoundingClientRect();
-
-    const dx = fromRect.left - toRect.left;
-    const dy = fromRect.top - toRect.top;
-    const sx = fromRect.width / toRect.width;
-    const sy = fromRect.height / toRect.height;
-
+    // Keep prop wiring intact from callers; entrance is intentionally geometry-agnostic
+    // to avoid Chrome glitches when source cards are inside transformed/pinned sections.
+    void fromRect;
     gsap.set(overlayEl, { autoAlpha: 0 });
-    gsap.set(animEl, {
-      transformOrigin: "50% 50%",
-      x: dx,
-      y: dy,
-      scaleX: sx,
-      scaleY: sy,
-    });
+    gsap.set(animEl, { opacity: 0, y: 12, scale: 0.985 });
+    if (contentEl) gsap.set(contentEl, { opacity: 0, y: 10 });
 
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     introTlRef.current = tl;
-    tl.to(overlayEl, { autoAlpha: 1, duration: 0.22 });
-    tl.to(
-      animEl,
-      {
-        x: 0,
-        y: 0,
-        scaleX: 1,
-        scaleY: 1,
-        duration: 0.65,
-      },
-      "-=0.05",
-    );
+    tl.to(overlayEl, { autoAlpha: 1, duration: 0.2 }, 0);
+    tl.to(animEl, { opacity: 1, y: 0, scale: 1, duration: 0.34 }, 0);
     if (contentEl) {
-      tl.fromTo(
-        contentEl,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
-        "-=0.5",
-      );
+      tl.to(contentEl, { opacity: 1, y: 0, duration: 0.28 }, 0.08);
     }
 
     closeBtnRef.current?.focus();
