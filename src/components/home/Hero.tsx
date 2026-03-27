@@ -143,7 +143,7 @@ export default function Hero() {
           <div className="min-w-0 lg:col-span-5">
             <div
               ref={mediaRef}
-              className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 portrait:aspect-[4/5] portrait:max-h-[min(84svh,640px)] landscape:max-h-[min(85svh,640px)] lg:aspect-[4/5] lg:max-h-none"
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 max-h-[min(84svh,640px)] landscape:max-h-[min(70svh,480px)] lg:max-h-none"
             >
               <div
                 aria-hidden="true"
@@ -184,7 +184,7 @@ export default function Hero() {
                     <span className="block">Integrations.</span>
                     <span className="block">Shipping systems.</span>
                   </div>
-                  <div className="mt-2 font-mono text-[11px] leading-relaxed tracking-[0.14em] text-foreground/65 sm:text-[12px] sm:tracking-[0.18em]">
+                  <div className="mt-2 pb-2 font-mono text-[11px] leading-relaxed tracking-[0.14em] text-foreground/65 sm:text-[12px] sm:tracking-[0.18em]">
                     Production integration experience across payments and shipping, with safe retries, idempotency, and edge-case handling.
                     <div className="mt-3 space-y-2">
                       <div className="break-words font-mono text-[9px] tracking-[0.14em] text-foreground/60 sm:text-[11px] sm:tracking-[0.2em]">
@@ -203,7 +203,7 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-3 font-mono text-[8px] leading-none tracking-[0.08em] text-foreground/72 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:text-[11px] md:tracking-[0.2em]">
+                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pb-1 pt-3 font-mono text-[8px] leading-none tracking-[0.08em] text-foreground/72 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:text-[11px] md:tracking-[0.2em]">
                       <span className="min-w-0 whitespace-nowrap">
                         SCROLL_TO_EXPLORE
                       </span>

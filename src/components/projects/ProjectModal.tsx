@@ -238,15 +238,16 @@ export default function ProjectModal({
         onClick={requestClose}
       />
 
-      {/* Scroll layer — uses table-cell centering so content scrolls naturally on iOS without flex min-h tricks. */}
+      {/* Scroll layer — plain block child so iOS Safari scrolls reliably. No flex/table centering. */}
       <div className="absolute inset-0 z-10 overflow-y-auto overflow-x-hidden overscroll-y-contain [-webkit-overflow-scrolling:touch] [touch-action:pan-y]">
-        <div className="table w-full" style={{ minHeight: "100%" }}>
-          <div className="table-cell w-full align-middle px-3 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:px-6 sm:pb-6 sm:pt-6">
-            <div ref={animRef} className="mx-auto w-full max-w-2xl pb-6">
-              <div
-                ref={modalRef}
-                className="w-full rounded-2xl border border-white/10 bg-black/80 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] sm:p-6 md:p-8"
-              >
+        <div
+          ref={animRef}
+          className="mx-auto w-full max-w-2xl px-3 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:px-6 sm:pb-6 sm:pt-6 md:py-[8vh]"
+        >
+          <div
+            ref={modalRef}
+            className="w-full rounded-2xl border border-white/10 bg-black/80 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] sm:p-6 md:p-8"
+          >
             <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-6">
               <div className="space-y-2">
               <div className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
@@ -331,17 +332,13 @@ export default function ProjectModal({
                   a practical plan.
                 </div>
               </div>
-              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
     </div>
   );
 
-  // Render in a portal to avoid fixed-position issues
-  // inside transformed/pinned sections (e.g. ScrollTrigger pin).
   if (typeof document === "undefined") return null;
   return createPortal(ui, document.body);
 }
