@@ -80,7 +80,7 @@ export default function Hero() {
 
             <h1
               data-hero-head
-              className="mt-6 break-words text-[clamp(40px,11vw,136px)] leading-[0.78] tracking-tight font-display sm:mt-8 sm:text-[clamp(52px,8.8vw,136px)]"
+              className="mt-6 break-words text-[clamp(52px,14vw,136px)] leading-[0.8] tracking-tight font-display sm:mt-8 sm:text-[clamp(56px,9vw,136px)]"
             >
               <span className="block">{portfolioContent.name}</span>
               <span
@@ -203,9 +203,13 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            <div className="mt-3 flex flex-col gap-1 font-mono text-[10px] tracking-[0.16em] text-foreground/72 sm:mt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:text-[11px] sm:tracking-[0.22em] md:text-[12px]">
-              <span className="break-all">SCROLL_TO_EXPLORE</span>
-              <span className="text-accent">AVAILABLE_FOR_WORK</span>
+            <div className="mt-3 flex w-full min-w-0 flex-col gap-2 font-mono text-[9px] leading-snug tracking-[0.12em] text-foreground/72 sm:mt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:text-[11px] sm:leading-normal sm:tracking-[0.22em] md:text-[12px]">
+              <span className="min-w-0 max-w-full [overflow-wrap:anywhere]">
+                SCROLL_TO_EXPLORE
+              </span>
+              <span className="min-w-0 max-w-full text-accent [overflow-wrap:anywhere] sm:shrink-0 sm:text-right">
+                AVAILABLE_FOR_WORK
+              </span>
             </div>
           </div>
         </div>
