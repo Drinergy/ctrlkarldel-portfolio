@@ -42,7 +42,7 @@ export default function SiteHeader() {
       <div className="page-pad-x mx-auto flex w-full min-w-0 max-w-6xl items-center justify-between gap-4 py-5 sm:py-6">
         <GsapLink
           href="/"
-          className="inline-flex min-w-0 max-w-[min(100%,14rem)] items-center gap-3 truncate font-mono text-[11px] tracking-[0.22em] text-foreground/80 hover:text-foreground sm:max-w-none sm:text-[11px] sm:tracking-[0.28em]"
+          className="inline-flex min-w-0 max-w-[min(100%,14rem)] items-center gap-3 truncate font-mono text-[11px] tracking-[0.22em] text-foreground/80 hover:text-foreground sm:max-w-none sm:text-[11px] sm:tracking-[0.28em] md:text-[12px]"
         >
           {portfolioContent.name.toUpperCase()}
         </GsapLink>
@@ -50,7 +50,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-4">
           <MagneticButton
             cursor="view"
-            className="rounded-full border border-white/20 px-5 py-3 text-[13px] font-semibold tracking-wide text-foreground sm:px-4 sm:py-2 sm:text-sm"
+            className="rounded-full border border-white/20 px-5 py-3 text-[13px] font-semibold tracking-wide text-foreground sm:px-4 sm:py-2 sm:text-sm md:px-5 md:py-3 md:text-base"
             onClick={() => setOpen(true)}
             disabled={open}
           >
