@@ -41,7 +41,7 @@ GSAP helpers and primitives:
 
 Premium interactions:
 - `src/components/layout/RouteTransition.tsx` (cinematic route overlay transition)
-- `src/components/cursor/CustomCursor.tsx` (cursor follower)
+- `src/components/cursor/Cursor.tsx` (custom pointer overlay)
 - `src/components/noise/NoiseOverlay.tsx` (subtle animated grain overlay)
 - `src/components/projects/*` (project gallery cards + GSAP modal)
 
@@ -49,4 +49,3 @@ Premium interactions:
 
 - Reduced-motion is detected and animations are simplified/disabled accordingly.
 - Animations are implemented in client components and scoped with `gsap.context()` for safer cleanup.
-
