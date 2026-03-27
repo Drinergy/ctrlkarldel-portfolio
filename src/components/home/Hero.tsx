@@ -140,7 +140,7 @@ export default function Hero() {
           <div className="min-w-0 lg:col-span-5">
             <div
               ref={mediaRef}
-              className="relative aspect-[4/5] max-h-[min(88vh,640px)] w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 sm:max-h-none"
+              className="relative aspect-[4/5] max-h-[min(78svh,640px)] w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 sm:max-h-[min(72svh,640px)] md:max-h-[min(76svh,640px)] lg:max-h-none"
             >
               <div
                 aria-hidden="true"
@@ -172,7 +172,7 @@ export default function Hero() {
               />
 
               <div className="absolute inset-3 z-10 flex min-h-0 flex-col justify-end sm:inset-5 md:inset-6">
-                <div className="max-h-full min-h-0 w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:max-h-none sm:overflow-visible sm:p-5">
+                <div className="max-h-full min-h-0 w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:p-5">
                   <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/60 sm:text-[11px] sm:tracking-[0.28em]">
                     WHAT_I_BUILD
                   </div>

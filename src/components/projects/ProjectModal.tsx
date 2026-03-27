@@ -196,15 +196,14 @@ export default function ProjectModal({
         onClick={requestClose}
       />
 
-      <div className="relative flex h-full items-center justify-center p-6">
-        <div
-          ref={modalRef}
-          className="w-full max-w-2xl rounded-2xl border border-white/10 bg-black/80 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] md:p-8"
-        >
+      <div className="relative h-full overflow-y-auto overscroll-contain p-3 [-webkit-overflow-scrolling:touch] sm:p-6">
+        <div className="mx-auto flex min-h-full w-full max-w-2xl items-start py-3 sm:items-center sm:py-0">
           <div
-            className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-6"
+            ref={modalRef}
+            className="w-full max-h-[calc(100svh-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-white/10 bg-black/80 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-[2px] [-webkit-overflow-scrolling:touch] sm:max-h-[calc(100svh-3rem)] sm:p-6 md:p-8"
           >
-            <div className="space-y-2">
+            <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-6">
+              <div className="space-y-2">
               <div className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
                 PROJECT
               </div>
@@ -214,18 +213,18 @@ export default function ProjectModal({
               <div className="text-sm leading-relaxed text-foreground/70">
                 {project.summary}
               </div>
+              </div>
+              <button
+                ref={closeBtnRef}
+                type="button"
+                onClick={requestClose}
+                className="shrink-0 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold tracking-wide text-foreground hover:bg-white/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                Close
+              </button>
             </div>
-            <button
-              ref={closeBtnRef}
-              type="button"
-              onClick={requestClose}
-              className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold tracking-wide text-foreground hover:bg-white/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              Close
-            </button>
-          </div>
 
-          <div ref={contentRef} className="space-y-6">
+            <div ref={contentRef} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-12">
               <div className="md:col-span-7">
                 <div className="text-sm font-semibold tracking-wide text-foreground/90">
@@ -278,13 +277,14 @@ export default function ProjectModal({
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-              <div className="text-sm font-semibold tracking-wide text-foreground/90">
-                Want this outcome?
-              </div>
-              <div className="mt-2 text-sm leading-relaxed text-foreground/70">
-                Send a short summary of your workflow and constraints (APIs, timelines, edge cases). I’ll reply with
-                a practical plan.
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+                <div className="text-sm font-semibold tracking-wide text-foreground/90">
+                  Want this outcome?
+                </div>
+                <div className="mt-2 text-sm leading-relaxed text-foreground/70">
+                  Send a short summary of your workflow and constraints (APIs, timelines, edge cases). I’ll reply with
+                  a practical plan.
+                </div>
               </div>
             </div>
           </div>
