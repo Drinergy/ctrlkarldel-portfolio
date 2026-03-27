@@ -48,7 +48,7 @@ export default function FooterReveal() {
     <section ref={scopeRef} className="page-pad-x relative pb-8 sm:pb-10">
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         {/* Spacer so the footer feels “behind” the page */}
-        <div className="h-[38vh]" aria-hidden="true" />
+        <div className="h-[24vh] sm:h-[22vh] md:h-[20vh] lg:h-[18vh]" aria-hidden="true" />
       </div>
 
       <div
