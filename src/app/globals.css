@@ -53,6 +53,7 @@ html.has-custom-cursor * {
   body {
     background: #ffffff !important;
     color: #000000 !important;
+    height: auto !important;
   }
 
   header,
@@ -67,7 +68,7 @@ html.has-custom-cursor * {
 
   @page {
     size: A4;
-    margin: 12mm 14mm;
+    margin: 10mm 10mm;
   }
 
   /* Resume/PDF: keep borders and light grays from rendering as intended */

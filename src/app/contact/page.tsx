@@ -13,8 +13,8 @@ export default function ContactPage() {
   const email = portfolioContent.contact.email;
 
   return (
-    <main className="px-6 pb-24 pt-12 md:pt-14">
-      <div className="mx-auto w-full max-w-6xl">
+    <main className="min-w-0 px-4 pb-24 pt-12 sm:px-6 md:pt-14">
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
         <section className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-12">
           <ScrollReveal>
             <div className="space-y-5">
@@ -35,8 +35,8 @@ export default function ContactPage() {
             </div>
           </ScrollReveal>
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-7">
+          <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-10">
+            <div className="min-w-0 lg:col-span-7">
               <div className="space-y-5 rounded-2xl border border-white/10 bg-black/20 p-7 md:p-8">
                 <ScrollReveal>
                   <div className="font-mono text-[12px] font-semibold tracking-[0.22em] text-foreground/75">
@@ -56,13 +56,13 @@ export default function ContactPage() {
                 </ScrollReveal>
               </div>
             </div>
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-7 md:p-8">
-                <div className="space-y-5">
+            <div className="min-w-0 lg:col-span-5">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
+                <div className="flex flex-col gap-6 sm:gap-7">
                   <ScrollReveal>
                     <MagneticButton
                       href={`mailto:${email}`}
-                      className="w-full rounded-full border border-white/20 bg-black/30 px-8 py-3.5 text-center font-mono text-[13px] tracking-[0.22em] text-foreground/85"
+                      className="w-full rounded-full border border-white/20 bg-black/30 px-8 py-4 text-center font-mono text-[13px] tracking-[0.22em] text-foreground/85"
                     >
                       EMAIL_ME
                     </MagneticButton>
@@ -70,7 +70,7 @@ export default function ContactPage() {
                   <ScrollReveal>
                     <MagneticButton
                       href="/projects"
-                      className="w-full rounded-full border border-white/10 bg-white/0 px-8 py-3.5 text-center font-mono text-[13px] tracking-[0.22em] text-foreground/80"
+                      className="w-full rounded-full border border-white/10 bg-white/0 px-8 py-4 text-center font-mono text-[13px] tracking-[0.22em] text-foreground/80"
                     >
                       VIEW_PROJECTS
                     </MagneticButton>

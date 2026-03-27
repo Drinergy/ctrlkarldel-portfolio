@@ -35,7 +35,7 @@ export default function ResumePage() {
   const experience: ReadonlyArray<ExperienceItem> = [
     {
       company: "MJSI (Marcon John Solutions Inc)",
-      role: "Software Engineer Lead",
+      role: "Lead Software Engineer",
       dates: "2024 Sept – Present",
       bullets: [
         "Own API design and maintenance across Laravel services with stable contracts and clear error handling.",
@@ -86,7 +86,7 @@ export default function ResumePage() {
   return (
     <main className="resume-print min-w-0 px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-10 print:px-0 print:pb-0 print:pt-0">
       <div className="mx-auto w-full min-w-0 max-w-5xl print:max-w-none">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-4 sm:p-6 md:p-10 print:border-neutral-300 print:bg-white print:p-0 print:text-black print:shadow-none">
+        <div className="rounded-3xl bg-white/[0.02] p-4 sm:p-6 md:p-10 print:rounded-none print:bg-white print:p-0 print:text-black print:shadow-none">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             <div>
               <div className="font-display text-[clamp(44px,6.4vw,84px)] leading-[0.85] tracking-tight print:text-black">
@@ -109,20 +109,20 @@ export default function ResumePage() {
             <Divider />
           </div>
 
-          <div className="mt-8 grid gap-10 md:grid-cols-12 print:grid-cols-1 print:gap-8">
+          <div className="mt-8 grid gap-10 md:grid-cols-12 print:grid-cols-1 print:gap-6">
             <div className="md:col-span-7">
               <SectionTitle>SUMMARY</SectionTitle>
-              <div className="mt-3 font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-black">
+              <div className="mt-3 font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.45] print:tracking-[0.04em] print:text-black">
                 {summary}
               </div>
 
               <div className="mt-8">
                 <SectionTitle>EXPERIENCE</SectionTitle>
-                <div className="mt-5 space-y-6">
+                <div className="mt-5 space-y-6 print:space-y-4">
                   {experience.map((item) => (
                     <div
                       key={item.company}
-                      className="break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:border-neutral-300 print:bg-white print:shadow-none"
+                      className="break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:break-inside-auto print:border-neutral-300 print:bg-white print:p-4 print:shadow-none"
                     >
                       <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
                         <div className="font-display text-[22px] leading-tight tracking-tight text-foreground/90 print:text-black">
@@ -132,14 +132,14 @@ export default function ResumePage() {
                           {item.dates.toUpperCase()}
                         </div>
                       </div>
-                      <div className="mt-2 font-mono text-[12px] tracking-[0.16em] text-foreground/70 print:text-black">
+                      <div className="mt-2 font-mono text-[12px] tracking-[0.16em] text-foreground/70 print:text-[11px] print:tracking-[0.05em] print:text-black">
                         {item.role}
                       </div>
-                      <ul className="mt-4 space-y-2">
+                      <ul className="mt-3 space-y-2 print:space-y-1.5">
                         {item.bullets.map((b) => (
                           <li
                             key={b}
-                            className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-black"
+                            className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black"
                           >
                             - {b}
                           </li>
@@ -153,12 +153,12 @@ export default function ResumePage() {
 
             <div className="md:col-span-5">
               <SectionTitle>SKILLS</SectionTitle>
-              <div className="mt-4 break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:border-neutral-300 print:bg-white print:shadow-none">
-                <ul className="space-y-2">
+              <div className="mt-4 break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:break-inside-auto print:border-neutral-300 print:bg-white print:p-4 print:shadow-none">
+                <ul className="space-y-2 print:space-y-1.5">
                   {skills.map((s) => (
                     <li
                       key={s}
-                      className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-black"
+                      className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black"
                     >
                       - {s}
                     </li>
@@ -168,12 +168,12 @@ export default function ResumePage() {
 
               <div className="mt-8">
                 <SectionTitle>SELECTED PROJECTS</SectionTitle>
-                <div className="mt-4 break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:border-neutral-300 print:bg-white print:shadow-none">
-                  <ul className="space-y-2">
+                <div className="mt-4 break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:break-inside-auto print:border-neutral-300 print:bg-white print:p-4 print:shadow-none">
+                  <ul className="space-y-2 print:space-y-1.5">
                     {projects.map((p) => (
                       <li
                         key={p}
-                        className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-black"
+                        className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black"
                       >
                         - {p}
                       </li>

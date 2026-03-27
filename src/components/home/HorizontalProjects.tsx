@@ -81,7 +81,7 @@ function TiltCard({
     <button
       ref={cardRef}
       type="button"
-      className="flex h-full min-h-[20rem] w-full max-w-full shrink-0 self-stretch sm:min-h-[22rem] md:min-h-[26rem] md:w-[78vw] md:max-w-[560px]"
+      className="flex h-full min-h-[22rem] w-full max-w-full shrink-0 self-stretch sm:min-h-[24rem] md:h-[28rem] md:min-h-0 md:w-[78vw] md:max-w-[560px]"
       data-cursor="open"
       data-cursor-label="Open"
       onClick={() => {
@@ -105,31 +105,32 @@ function TiltCard({
         />
 
         <div className="relative flex min-h-0 flex-1 flex-col">
-          <div className="flex min-h-[5.5rem] items-start justify-between gap-4">
+          <div className="flex min-h-[5.5rem] shrink-0 items-start justify-between gap-4">
             <div className="min-w-0 flex-1 font-display text-[clamp(22px,2.6vw,28px)] leading-[0.95] tracking-tight text-foreground/90 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden">
               {project.title}
             </div>
-            <div className="shrink-0 pt-1 text-right font-mono text-[11px] tracking-[0.2em] text-foreground/55">
+            <div className="max-w-[42%] shrink-0 pt-1 text-right font-mono text-[10px] leading-snug tracking-[0.16em] text-foreground/55 sm:text-[11px] sm:tracking-[0.2em]">
               {project.stack.slice(0, 2).join(" / ").toUpperCase()}
             </div>
           </div>
 
-          <div className="mt-4 min-h-[4.75rem] flex-1 font-mono text-[12px] leading-relaxed tracking-[0.16em] text-foreground/65 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] overflow-hidden md:text-[13px]">
-            {project.summary}
+          <div className="flex min-h-0 flex-1 flex-col pt-4">
+            <p className="font-mono text-[12px] leading-relaxed tracking-[0.16em] text-foreground/65 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] overflow-hidden md:text-[13px]">
+              {project.summary}
+            </p>
+            <div className="mt-auto flex min-h-[3.25rem] flex-wrap content-end gap-2 pt-4">
+              {project.stack.slice(0, 4).map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-white/10 bg-black/30 px-3 py-1 font-mono text-[10px] tracking-[0.22em] text-foreground/60"
+                >
+                  {t.toUpperCase()}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-6 flex min-h-[2.5rem] flex-wrap content-start gap-2">
-            {project.stack.slice(0, 4).map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-white/10 bg-black/30 px-3 py-1 font-mono text-[10px] tracking-[0.22em] text-foreground/60"
-              >
-                {t.toUpperCase()}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
+          <div className="mt-4 flex shrink-0 items-center justify-between border-t border-white/5 pt-6">
             <div className="font-mono text-[11px] tracking-[0.22em] text-foreground/55">
               TILT_ON_HOVER
             </div>
@@ -230,7 +231,7 @@ export default function HorizontalProjects({
       <div className="mt-8 sm:mt-10">
         <div
           ref={trackRef}
-          className="flex flex-col gap-6 px-4 will-change-transform md:min-h-[26rem] md:flex-row md:items-stretch md:gap-8 md:px-6"
+          className="flex flex-col gap-6 px-4 will-change-transform md:min-h-[28rem] md:flex-row md:items-stretch md:gap-8 md:px-6"
           style={{ transform: "translate3d(0,0,0)" }}
         >
           <div

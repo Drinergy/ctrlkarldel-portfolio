@@ -171,8 +171,8 @@ export default function Hero() {
                 }}
               />
 
-              <div className="absolute inset-x-0 bottom-4 z-10 px-4 pb-4 sm:bottom-7 sm:px-6 sm:pb-6 md:bottom-8">
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-[3px] sm:p-5">
+              <div className="absolute inset-3 z-10 flex min-h-0 flex-col justify-end sm:inset-5 md:inset-6">
+                <div className="max-h-full min-h-0 w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:max-h-none sm:overflow-visible sm:p-5">
                   <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/60 sm:text-[11px] sm:tracking-[0.28em]">
                     WHAT_I_BUILD
                   </div>
@@ -199,17 +199,18 @@ export default function Hero() {
                         AI-assisted development to boost skills and speed. I orchestrate tooling, prompts, and reviews so architecture and quality stay engineer-owned.
                       </div>
                     </div>
+
+                    <div className="mt-4 flex flex-col gap-1.5 border-t border-white/10 pt-3 font-mono text-[8px] leading-snug tracking-[0.1em] text-foreground/72 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:text-[11px] md:tracking-[0.2em]">
+                      <span className="min-w-0 max-w-full [overflow-wrap:anywhere]">
+                        SCROLL_TO_EXPLORE
+                      </span>
+                      <span className="min-w-0 max-w-full text-accent [overflow-wrap:anywhere] sm:shrink-0 sm:text-right">
+                        AVAILABLE_FOR_WORK
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="mt-3 flex w-full min-w-0 flex-col gap-2 font-mono text-[9px] leading-snug tracking-[0.12em] text-foreground/72 sm:mt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:text-[11px] sm:leading-normal sm:tracking-[0.22em] md:text-[12px]">
-              <span className="min-w-0 max-w-full [overflow-wrap:anywhere]">
-                SCROLL_TO_EXPLORE
-              </span>
-              <span className="min-w-0 max-w-full text-accent [overflow-wrap:anywhere] sm:shrink-0 sm:text-right">
-                AVAILABLE_FOR_WORK
-              </span>
             </div>
           </div>
         </div>
