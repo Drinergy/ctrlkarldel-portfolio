@@ -210,10 +210,10 @@ export default function ProjectModal({
               <div className="text-xs font-semibold tracking-[0.28em] text-foreground/60">
                 PROJECT
               </div>
-              <div className="text-2xl font-semibold leading-tight text-foreground">
+              <div className="text-[22px] font-semibold leading-tight text-foreground sm:text-2xl">
                 {project.title}
               </div>
-              <div className="text-sm leading-relaxed text-foreground/70">
+              <div className="text-[13px] leading-relaxed text-foreground/70 sm:text-sm">
                 {project.summary}
               </div>
               </div>
@@ -223,7 +223,7 @@ export default function ProjectModal({
                 data-cursor="view"
                 data-cursor-label="Close"
                 onClick={requestClose}
-                className="shrink-0 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold tracking-wide text-foreground hover:bg-white/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="shrink-0 rounded-full border border-white/20 px-5 py-3 text-[13px] font-semibold tracking-wide text-foreground hover:bg-white/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-4 sm:py-2 sm:text-sm"
               >
                 Close
               </button>
@@ -232,14 +232,14 @@ export default function ProjectModal({
             <div ref={contentRef} className="space-y-6">
             <div className="grid gap-6 md:grid-cols-12">
               <div className="md:col-span-7">
-                <div className="text-sm font-semibold tracking-wide text-foreground/90">
+                <div className="text-[13px] font-semibold tracking-wide text-foreground/90 sm:text-sm">
                   Highlights
                 </div>
                 <ul className="mt-4 space-y-3">
                   {project.highlights.map((h) => (
                     <li
                       key={h}
-                      className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-relaxed text-foreground/70"
+                      className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-[13px] leading-relaxed text-foreground/70 sm:text-sm"
                     >
                       {h}
                     </li>
@@ -247,21 +247,21 @@ export default function ProjectModal({
                 </ul>
               </div>
               <div className="md:col-span-5">
-                <div className="text-sm font-semibold tracking-wide text-foreground/90">
+                <div className="text-[13px] font-semibold tracking-wide text-foreground/90 sm:text-sm">
                   Stack
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.stack.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[11px] font-semibold tracking-widest text-foreground/70"
+                      className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[12px] font-semibold tracking-widest text-foreground/70 sm:text-[11px]"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 text-sm font-semibold tracking-wide text-foreground/90">
+                <div className="mt-6 text-[13px] font-semibold tracking-wide text-foreground/90 sm:text-sm">
                   Links
                 </div>
                 <div className="mt-3 flex flex-col gap-2">
@@ -271,7 +271,7 @@ export default function ProjectModal({
                       href={l.href}
                       data-cursor="view"
                       data-cursor-label="View"
-                      className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm font-semibold text-foreground/80 transition-[transform,opacity,background-color,border-color] duration-300 hover:bg-white/5 hover:border-white/20 active:scale-[0.99]"
+                      className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-[13px] font-semibold text-foreground/80 transition-[transform,opacity,background-color,border-color] duration-300 hover:bg-white/5 hover:border-white/20 active:scale-[0.99] sm:text-sm"
                       target={l.href.startsWith("http") ? "_blank" : undefined}
                       rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     >
@@ -283,10 +283,10 @@ export default function ProjectModal({
             </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-                <div className="text-sm font-semibold tracking-wide text-foreground/90">
+                <div className="text-[13px] font-semibold tracking-wide text-foreground/90 sm:text-sm">
                   Want this outcome?
                 </div>
-                <div className="mt-2 text-sm leading-relaxed text-foreground/70">
+                <div className="mt-2 text-[13px] leading-relaxed text-foreground/70 sm:text-sm">
                   Send a short summary of your workflow and constraints (APIs, timelines, edge cases). I’ll reply with
                   a practical plan.
                 </div>

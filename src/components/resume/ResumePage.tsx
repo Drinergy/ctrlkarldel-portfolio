@@ -92,11 +92,11 @@ export default function ResumePage() {
               <div className="font-display text-[clamp(44px,6.4vw,84px)] leading-[0.85] tracking-tight print:text-black">
                 {header.name}
               </div>
-              <div className="mt-2 font-mono text-[12px] tracking-[0.22em] text-foreground/70 print:text-black">
+              <div className="mt-2 font-mono text-[13px] tracking-[0.22em] text-foreground/70 print:text-black sm:text-[12px]">
                 {header.title.toUpperCase()}
               </div>
 
-              <div className="mt-5 space-y-1 font-mono text-[12px] tracking-[0.12em] text-foreground/70 print:text-black">
+              <div className="mt-5 space-y-1 font-mono text-[13px] tracking-[0.12em] text-foreground/70 print:text-black sm:text-[12px]">
                 <div>{header.email}</div>
                 <div>{header.location}</div>
               </div>
@@ -112,7 +112,7 @@ export default function ResumePage() {
           <div className="mt-8 grid gap-10 md:grid-cols-12 print:grid-cols-1 print:gap-6">
             <div className="md:col-span-7">
               <SectionTitle>SUMMARY</SectionTitle>
-              <div className="mt-3 font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.45] print:tracking-[0.04em] print:text-black">
+              <div className="mt-3 font-mono text-[13px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.45] print:tracking-[0.04em] print:text-black sm:text-[12px]">
                 {summary}
               </div>
 
@@ -132,14 +132,14 @@ export default function ResumePage() {
                           {item.dates.toUpperCase()}
                         </div>
                       </div>
-                      <div className="mt-2 font-mono text-[12px] tracking-[0.16em] text-foreground/70 print:text-[11px] print:tracking-[0.05em] print:text-black">
+                      <div className="mt-2 font-mono text-[13px] tracking-[0.16em] text-foreground/70 print:text-[11px] print:tracking-[0.05em] print:text-black sm:text-[12px]">
                         {item.role}
                       </div>
                       <ul className="mt-3 space-y-2 print:space-y-1.5">
                         {item.bullets.map((b) => (
                           <li
                             key={b}
-                            className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black"
+                            className="font-mono text-[13px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black sm:text-[12px]"
                           >
                             - {b}
                           </li>
@@ -158,7 +158,7 @@ export default function ResumePage() {
                   {skills.map((s) => (
                     <li
                       key={s}
-                      className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black"
+                      className="font-mono text-[13px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black sm:text-[12px]"
                     >
                       - {s}
                     </li>
@@ -173,7 +173,7 @@ export default function ResumePage() {
                     {projects.map((p) => (
                       <li
                         key={p}
-                        className="font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black"
+                        className="font-mono text-[13px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-[11px] print:leading-[1.4] print:tracking-[0.04em] print:text-black sm:text-[12px]"
                       >
                         - {p}
                       </li>
