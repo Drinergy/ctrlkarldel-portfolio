@@ -143,7 +143,7 @@ export default function Hero() {
           <div className="min-w-0 lg:col-span-5">
             <div
               ref={mediaRef}
-              className="relative aspect-[4/5] max-h-[min(84svh,640px)] w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 sm:max-h-[min(84svh,640px)] md:max-h-[min(78svh,640px)] lg:max-h-none"
+              className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 portrait:aspect-[4/5] portrait:max-h-[min(84svh,640px)] landscape:max-h-[min(85svh,640px)] lg:aspect-[4/5] lg:max-h-none"
             >
               <div
                 aria-hidden="true"
