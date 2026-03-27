@@ -67,10 +67,10 @@ export default function Hero() {
   );
 
   return (
-    <section ref={scopeRef} className="relative overflow-hidden px-6 pt-10">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
+    <section ref={scopeRef} className="relative overflow-hidden px-4 pt-8 sm:px-6 sm:pt-10">
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
+        <div className="grid min-w-0 gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="min-w-0 lg:col-span-7">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-surface/40 px-4 py-2">
               <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
               <span className="font-mono text-[11px] tracking-[0.28em] text-foreground/70">
@@ -80,7 +80,7 @@ export default function Hero() {
 
             <h1
               data-hero-head
-              className="mt-8 text-[clamp(64px,8.8vw,136px)] leading-[0.78] tracking-tight font-display"
+              className="mt-6 break-words text-[clamp(40px,11vw,136px)] leading-[0.78] tracking-tight font-display sm:mt-8 sm:text-[clamp(52px,8.8vw,136px)]"
             >
               <span className="block">{portfolioContent.name}</span>
               <span
@@ -101,17 +101,20 @@ export default function Hero() {
 
             <p
               data-hero-sub
-              className="mt-6 max-w-xl font-mono text-[12px] leading-relaxed tracking-[0.22em] text-foreground/65"
+              className="mt-5 max-w-xl font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/65 sm:mt-6 sm:tracking-[0.18em] md:tracking-[0.22em]"
             >
-              <SplitText text={sub} unit="char" />
+              <SplitText text={sub} unit="word" />
             </p>
 
-            <div data-hero-meta className="mt-10 flex flex-wrap items-center gap-3">
+            <div
+              data-hero-meta
+              className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center"
+            >
               <MagneticButton
                 href="/projects"
                 cursor="view"
                 cursorLabel="View"
-                className="group rounded-full border border-white/15 bg-white/0 px-6 py-3 font-mono text-[12px] tracking-[0.22em] text-foreground/85 transition-colors hover:bg-white/[0.03]"
+                className="group w-full justify-center rounded-full border border-white/15 bg-white/0 px-6 py-3 text-center font-mono text-[12px] tracking-[0.18em] text-foreground/85 transition-colors hover:bg-white/[0.03] sm:w-auto sm:tracking-[0.22em]"
               >
                 VIEW_WORK
               </MagneticButton>
@@ -119,7 +122,7 @@ export default function Hero() {
                 href="/resume"
                 cursor="view"
                 cursorLabel="View"
-                className="group rounded-full border border-white/15 bg-white/0 px-6 py-3 font-mono text-[12px] tracking-[0.22em] text-foreground/85 transition-colors hover:bg-white/[0.03]"
+                className="group w-full justify-center rounded-full border border-white/15 bg-white/0 px-6 py-3 text-center font-mono text-[12px] tracking-[0.18em] text-foreground/85 transition-colors hover:bg-white/[0.03] sm:w-auto sm:tracking-[0.22em]"
               >
                 VIEW_RESUME
               </MagneticButton>
@@ -127,17 +130,17 @@ export default function Hero() {
                 href="/contact"
                 cursor="open"
                 cursorLabel="Open"
-                className="rounded-full border border-white/10 bg-white/0 px-6 py-3 font-mono text-[12px] tracking-[0.22em] text-foreground/80 hover:bg-white/[0.03]"
+                className="w-full justify-center rounded-full border border-white/10 bg-white/0 px-6 py-3 text-center font-mono text-[12px] tracking-[0.18em] text-foreground/80 hover:bg-white/[0.03] sm:w-auto sm:tracking-[0.22em]"
               >
                 START_PROJECT
               </MagneticButton>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div
               ref={mediaRef}
-              className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-surface/60"
+              className="relative aspect-[4/5] max-h-[min(88vh,640px)] w-full overflow-hidden rounded-3xl border border-white/10 bg-surface/60 sm:max-h-none"
             >
               <div
                 aria-hidden="true"
@@ -168,31 +171,31 @@ export default function Hero() {
                 }}
               />
 
-              <div className="absolute inset-x-0 bottom-7 z-10 px-6 pb-6 sm:bottom-8">
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-[3px]">
-                  <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/60">
+              <div className="absolute inset-x-0 bottom-4 z-10 px-4 pb-4 sm:bottom-7 sm:px-6 sm:pb-6 md:bottom-8">
+                <div className="rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-[3px] sm:p-5">
+                  <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/60 sm:text-[11px] sm:tracking-[0.28em]">
                     WHAT_I_BUILD
                   </div>
-                  <div className="mt-3 text-[22px] leading-tight tracking-tight text-foreground/90 font-display">
+                  <div className="mt-2 text-[clamp(18px,5vw,22px)] leading-tight tracking-tight text-foreground/90 font-display sm:mt-3 sm:text-[22px]">
                     <span className="block">Laravel APIs.</span>
                     <span className="block">Integrations.</span>
                     <span className="block">Shipping systems.</span>
                   </div>
-                  <div className="mt-2 font-mono text-[12px] leading-relaxed tracking-[0.18em] text-foreground/65">
+                  <div className="mt-2 font-mono text-[11px] leading-relaxed tracking-[0.14em] text-foreground/65 sm:text-[12px] sm:tracking-[0.18em]">
                     Production integration experience across payments and shipping, with safe retries, idempotency, and edge-case handling.
                     <div className="mt-3 space-y-2">
-                      <div className="font-mono text-[11px] tracking-[0.22em] text-foreground/60">
+                      <div className="break-words font-mono text-[9px] tracking-[0.14em] text-foreground/60 sm:text-[11px] sm:tracking-[0.2em]">
                         PAYMENTS: PAYMONGO · STRIPE · SEAMLESSCHEX (CC, ACH) · PAYNOTE
                       </div>
-                      <div className="font-mono text-[11px] tracking-[0.22em] text-foreground/60">
+                      <div className="break-words font-mono text-[9px] tracking-[0.14em] text-foreground/60 sm:text-[11px] sm:tracking-[0.2em]">
                         SHIPMENTS: UPS · USPS · SHIPSTATION · SHIPPO
                       </div>
                     </div>
                     <div className="mt-4 border-t border-white/10 pt-4">
-                      <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/55">
+                      <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/55 sm:text-[11px] sm:tracking-[0.28em]">
                         HOW_I_WORK
                       </div>
-                      <div className="mt-2 font-mono text-[12px] leading-relaxed tracking-[0.18em] text-foreground/65">
+                      <div className="mt-2 font-mono text-[11px] leading-relaxed tracking-[0.14em] text-foreground/65 sm:text-[12px] sm:tracking-[0.18em]">
                         AI-assisted development to boost skills and speed. I orchestrate tooling, prompts, and reviews so architecture and quality stay engineer-owned.
                       </div>
                     </div>
@@ -200,8 +203,8 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            <div className="mt-4 flex items-center justify-between font-mono text-[11px] tracking-[0.22em] sm:text-[12px]">
-              <span className="text-foreground/72">SCROLL_TO_EXPLORE</span>
+            <div className="mt-3 flex flex-col gap-1 font-mono text-[10px] tracking-[0.16em] text-foreground/72 sm:mt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:text-[11px] sm:tracking-[0.22em] md:text-[12px]">
+              <span className="break-all">SCROLL_TO_EXPLORE</span>
               <span className="text-accent">AVAILABLE_FOR_WORK</span>
             </div>
           </div>

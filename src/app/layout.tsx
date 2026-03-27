@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${mono.variable} h-full antialiased dark`}
+      className={`${display.variable} ${mono.variable} h-full min-w-0 antialiased dark`}
     >
-      <body className="min-h-full flex flex-col relative z-10">
+      <body className="relative z-10 flex min-h-full min-w-0 flex-col overflow-x-hidden">
         <AppProviders>
           <NoiseOverlay />
           <Cursor />

@@ -81,7 +81,7 @@ function TiltCard({
     <button
       ref={cardRef}
       type="button"
-      className="h-full w-[78vw] max-w-[560px] shrink-0"
+      className="flex h-full min-h-[20rem] w-full max-w-full shrink-0 self-stretch sm:min-h-[22rem] md:min-h-[26rem] md:w-[78vw] md:max-w-[560px]"
       data-cursor="open"
       data-cursor-label="Open"
       onClick={() => {
@@ -93,7 +93,7 @@ function TiltCard({
     >
       <div
         ref={innerRef}
-        className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-7"
+        className="relative flex h-full min-h-0 w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-5 sm:p-7 md:p-8"
       >
         <div
           aria-hidden="true"
@@ -104,21 +104,21 @@ function TiltCard({
           }}
         />
 
-        <div className="relative flex h-full flex-col">
-          <div className="flex items-start justify-between gap-4">
-            <div className="font-display text-[28px] leading-[0.9] tracking-tight text-foreground/90">
+        <div className="relative flex min-h-0 flex-1 flex-col">
+          <div className="flex min-h-[5.5rem] items-start justify-between gap-4">
+            <div className="min-w-0 flex-1 font-display text-[clamp(22px,2.6vw,28px)] leading-[0.95] tracking-tight text-foreground/90 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden">
               {project.title}
             </div>
-            <div className="font-mono text-[11px] tracking-[0.24em] text-foreground/55">
+            <div className="shrink-0 pt-1 text-right font-mono text-[11px] tracking-[0.2em] text-foreground/55">
               {project.stack.slice(0, 2).join(" / ").toUpperCase()}
             </div>
           </div>
 
-          <div className="mt-4 font-mono text-[12px] leading-relaxed tracking-[0.16em] text-foreground/65 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] overflow-hidden">
+          <div className="mt-4 min-h-[4.75rem] flex-1 font-mono text-[12px] leading-relaxed tracking-[0.16em] text-foreground/65 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] overflow-hidden md:text-[13px]">
             {project.summary}
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-6 flex min-h-[2.5rem] flex-wrap content-start gap-2">
             {project.stack.slice(0, 4).map((t) => (
               <span
                 key={t}
@@ -129,7 +129,7 @@ function TiltCard({
             ))}
           </div>
 
-          <div className="mt-auto pt-10 flex items-center justify-between">
+          <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
             <div className="font-mono text-[11px] tracking-[0.22em] text-foreground/55">
               TILT_ON_HOVER
             </div>
@@ -167,64 +167,76 @@ export default function HorizontalProjects({
       const track = trackRef.current;
       if (!section || !track) return;
 
-      const getDistance = () => {
-        const vw = window.innerWidth;
-        const total = track.scrollWidth;
-        return Math.max(0, total - vw);
-      };
+      const mm = gsap.matchMedia();
 
-      const tween = gsap.to(track, {
-        x: () => -getDistance(),
-        ease: "none",
-        overwrite: "auto",
+      mm.add("(min-width: 768px)", () => {
+        const getDistance = () => {
+          const vw = window.innerWidth;
+          const total = track.scrollWidth;
+          return Math.max(0, total - vw);
+        };
+
+        const tween = gsap.to(track, {
+          x: () => -getDistance(),
+          ease: "none",
+          overwrite: "auto",
+        });
+
+        const st = ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: () => `+=${getDistance() + window.innerHeight * 0.35}`,
+          scrub: 0.9,
+          pin: true,
+          anticipatePin: 1,
+          animation: tween,
+          invalidateOnRefresh: true,
+        });
+
+        return () => {
+          st.kill();
+          tween.kill();
+        };
       });
 
-      const st = ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: () => `+=${getDistance() + window.innerHeight * 0.35}`,
-        scrub: 0.9,
-        pin: true,
-        anticipatePin: 1,
-        animation: tween,
-        invalidateOnRefresh: true,
-      });
-
-      return () => {
-        st.kill();
-        tween.kill();
-      };
+      return () => mm.revert();
     },
     { scope: scopeRef, dependencies: [reducedMotion, items.length] },
   );
 
   return (
-    <section ref={scopeRef} className="relative mt-24 overflow-hidden pt-20 md:pt-28">
-      <div className="px-6">
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="flex items-end justify-between gap-10">
-            <div>
+    <section ref={scopeRef} className="relative mt-16 overflow-hidden pt-14 sm:mt-24 sm:pt-20 md:pt-28">
+      <div className="px-4 sm:px-6">
+        <div className="mx-auto w-full min-w-0 max-w-6xl">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
+            <div className="min-w-0">
               <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/55">
                 SELECTED_WORK
               </div>
-              <div className="mt-3 font-display text-[clamp(42px,6vw,88px)] leading-[0.78] tracking-tight">
+              <div className="mt-3 break-words font-display text-[clamp(32px,9vw,88px)] leading-[0.78] tracking-tight sm:text-[clamp(42px,6vw,88px)]">
                 Selected projects, in motion.
               </div>
+              <p className="mt-4 font-mono text-[12px] leading-relaxed tracking-[0.16em] text-foreground/55 md:hidden">
+                Tap a card to open details. Swipe the page to continue.
+              </p>
             </div>
-            <div className="hidden md:block max-w-sm font-mono text-[12px] leading-relaxed tracking-[0.18em] text-foreground/55">
+            <div className="hidden max-w-sm font-mono text-[12px] leading-relaxed tracking-[0.18em] text-foreground/55 md:block">
               Scroll vertically to move horizontally. Hover a card to preview with tilt. Open for details.
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-8 sm:mt-10">
         <div
           ref={trackRef}
-          className="flex items-stretch gap-6 px-6 will-change-transform"
+          className="flex flex-col gap-6 px-4 will-change-transform md:min-h-[26rem] md:flex-row md:items-stretch md:gap-8 md:px-6"
           style={{ transform: "translate3d(0,0,0)" }}
         >
-          <div className="w-[max(8vw,32px)] shrink-0" aria-hidden="true" />
+          <div
+            className="hidden w-[max(8vw,32px)] shrink-0 md:block"
+            aria-hidden="true"
+          />
           {items.map((p) => (
             <TiltCard
               key={p.title}
@@ -236,7 +248,10 @@ export default function HorizontalProjects({
               }}
             />
           ))}
-          <div className="w-[max(18vw,96px)] shrink-0" aria-hidden="true" />
+          <div
+            className="hidden w-[max(18vw,96px)] shrink-0 md:block"
+            aria-hidden="true"
+          />
         </div>
       </div>
 

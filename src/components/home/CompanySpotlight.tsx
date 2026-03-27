@@ -64,11 +64,11 @@ export default function CompanySpotlight() {
   );
 
   return (
-    <section ref={scopeRef} className="relative mt-24 px-6 pb-24">
-      <div className="mx-auto w-full max-w-6xl">
+    <section ref={scopeRef} className="relative mt-16 px-4 pb-20 sm:mt-24 sm:px-6 sm:pb-24">
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
         <div
           data-company-reveal
-          className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-7 md:p-10"
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-5 sm:p-7 md:p-10"
         >
           <div
             aria-hidden="true"
@@ -89,7 +89,7 @@ export default function CompanySpotlight() {
               </div>
               <div
                 data-company-reveal
-                className="mt-4 font-display text-[clamp(42px,6vw,86px)] leading-[0.82] tracking-tight"
+                className="mt-4 break-words font-display text-[clamp(28px,8vw,86px)] leading-[0.82] tracking-tight sm:text-[clamp(42px,6vw,86px)]"
               >
                 <span className="block">Solomon GE Systems LLC</span>
                 <span className="block text-foreground/75">We build the software your business runs on.</span>

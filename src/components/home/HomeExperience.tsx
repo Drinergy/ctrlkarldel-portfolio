@@ -11,7 +11,7 @@ import { portfolioContent } from "@/components/content/portfolio-content";
 export default function HomeExperience() {
   return (
     <Preloader>
-      <main className="relative">
+      <main className="relative min-w-0">
         <Hero />
         <HorizontalProjects projects={portfolioContent.projects} />
         <BentoAbout />

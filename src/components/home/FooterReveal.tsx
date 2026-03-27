@@ -45,15 +45,15 @@ export default function FooterReveal() {
   );
 
   return (
-    <section ref={scopeRef} className="relative px-6 pb-10">
-      <div className="mx-auto w-full max-w-6xl">
+    <section ref={scopeRef} className="relative px-4 pb-8 sm:px-6 sm:pb-10">
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
         {/* Spacer so the footer feels “behind” the page */}
         <div className="h-[38vh]" aria-hidden="true" />
       </div>
 
       <div
         ref={footerRef}
-        className="sticky bottom-0 mx-auto w-full max-w-6xl rounded-t-3xl border border-white/10 bg-surface/80 px-6 py-10 backdrop-blur-[6px]"
+        className="sticky bottom-0 mx-auto w-full max-w-6xl rounded-t-3xl border border-white/10 bg-surface/80 px-4 py-8 backdrop-blur-[6px] sm:px-6 sm:py-10"
       >
         <div
           aria-hidden="true"
@@ -66,11 +66,11 @@ export default function FooterReveal() {
 
         <div data-footer-content className="relative">
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <div>
+            <div className="min-w-0">
               <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/55">
                 LETS_WORK
               </div>
-              <div className="mt-3 font-display text-[clamp(46px,7vw,104px)] leading-[0.78] tracking-tight">
+              <div className="mt-3 break-words font-display text-[clamp(34px,9vw,104px)] leading-[0.78] tracking-tight sm:text-[clamp(46px,7vw,104px)]">
                 <span className="block">Let’s ship.</span>
                 <span className="block">Clear scope.</span>
                 <span className="block">Stable delivery.</span>

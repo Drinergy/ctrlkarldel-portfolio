@@ -17,6 +17,10 @@
   --font-mono: var(--font-mono);
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -62,6 +66,13 @@ html.has-custom-cursor * {
   }
 
   @page {
-    margin: 14mm;
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
+  /* Resume/PDF: keep borders and light grays from rendering as intended */
+  .resume-print {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

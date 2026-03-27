@@ -22,7 +22,7 @@ function BentoTile({
   return (
     <div
       data-bento-tile
-      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-7 ${
+      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-surface/70 p-5 sm:p-7 ${
         className ?? ""
       }`}
     >
@@ -123,19 +123,19 @@ export default function BentoAbout() {
   );
 
   return (
-    <section ref={scopeRef} className="relative mt-24 px-6 pb-24">
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="flex items-end justify-between gap-10">
-          <div>
+    <section ref={scopeRef} className="relative mt-16 px-4 pb-20 sm:mt-24 sm:px-6 sm:pb-24">
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
+          <div className="min-w-0">
             <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/55">
               BENTO_SYSTEM
             </div>
-            <div className="mt-3 font-display text-[clamp(42px,6vw,88px)] leading-[0.78] tracking-tight">
+            <div className="mt-3 break-words font-display text-[clamp(32px,9vw,88px)] leading-[0.78] tracking-tight sm:text-[clamp(42px,6vw,88px)]">
               <span className="block">A broken grid.</span>
               <span className="block">A clear story.</span>
             </div>
           </div>
-          <div className="hidden md:block max-w-sm font-mono text-[12px] leading-relaxed tracking-[0.18em] text-foreground/55">
+          <div className="hidden max-w-sm font-mono text-[12px] leading-relaxed tracking-[0.18em] text-foreground/55 md:block">
             A quick snapshot of how I work: stability, delivery, and engineering clarity. Simple layout. Strong hierarchy.
           </div>
         </div>

@@ -9,14 +9,16 @@ type ExperienceItem = Readonly<{
 
 function SectionTitle({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/55">
+    <div className="font-mono text-[11px] tracking-[0.28em] text-foreground/55 print:text-black print:opacity-90">
       {children}
     </div>
   );
 }
 
 function Divider() {
-  return <div className="h-px w-full bg-white/10" aria-hidden="true" />;
+  return (
+    <div className="h-px w-full bg-white/10 print:bg-neutral-300" aria-hidden="true" />
+  );
 }
 
 export default function ResumePage() {
@@ -82,12 +84,12 @@ export default function ResumePage() {
   ] as const;
 
   return (
-    <main className="px-6 pb-24 pt-10 resume-print">
-      <div className="mx-auto w-full max-w-5xl">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-10 print:bg-white print:text-black">
+    <main className="resume-print min-w-0 px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-10 print:px-0 print:pb-0 print:pt-0">
+      <div className="mx-auto w-full min-w-0 max-w-5xl print:max-w-none">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-4 sm:p-6 md:p-10 print:border-neutral-300 print:bg-white print:p-0 print:text-black print:shadow-none">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             <div>
-              <div className="font-display text-[clamp(44px,6.4vw,84px)] leading-[0.85] tracking-tight">
+              <div className="font-display text-[clamp(44px,6.4vw,84px)] leading-[0.85] tracking-tight print:text-black">
                 {header.name}
               </div>
               <div className="mt-2 font-mono text-[12px] tracking-[0.22em] text-foreground/70 print:text-black">
@@ -107,7 +109,7 @@ export default function ResumePage() {
             <Divider />
           </div>
 
-          <div className="mt-8 grid gap-10 md:grid-cols-12">
+          <div className="mt-8 grid gap-10 md:grid-cols-12 print:grid-cols-1 print:gap-8">
             <div className="md:col-span-7">
               <SectionTitle>SUMMARY</SectionTitle>
               <div className="mt-3 font-mono text-[12px] leading-relaxed tracking-[0.12em] text-foreground/70 print:text-black">
@@ -118,7 +120,10 @@ export default function ResumePage() {
                 <SectionTitle>EXPERIENCE</SectionTitle>
                 <div className="mt-5 space-y-6">
                   {experience.map((item) => (
-                    <div key={item.company} className="rounded-2xl border border-white/10 bg-black/20 p-6 print:bg-white">
+                    <div
+                      key={item.company}
+                      className="break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:border-neutral-300 print:bg-white print:shadow-none"
+                    >
                       <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
                         <div className="font-display text-[22px] leading-tight tracking-tight text-foreground/90 print:text-black">
                           {item.company}
@@ -148,7 +153,7 @@ export default function ResumePage() {
 
             <div className="md:col-span-5">
               <SectionTitle>SKILLS</SectionTitle>
-              <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-6 print:bg-white">
+              <div className="mt-4 break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:border-neutral-300 print:bg-white print:shadow-none">
                 <ul className="space-y-2">
                   {skills.map((s) => (
                     <li
@@ -163,7 +168,7 @@ export default function ResumePage() {
 
               <div className="mt-8">
                 <SectionTitle>SELECTED PROJECTS</SectionTitle>
-                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-6 print:bg-white">
+                <div className="mt-4 break-inside-avoid rounded-2xl border border-white/10 bg-black/20 p-6 print:border-neutral-300 print:bg-white print:shadow-none">
                   <ul className="space-y-2">
                     {projects.map((p) => (
                       <li
@@ -179,12 +184,8 @@ export default function ResumePage() {
             </div>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 print:mt-8">
             <Divider />
-          </div>
-
-          <div className="mt-6 font-mono text-[11px] tracking-[0.22em] text-foreground/55 print:text-black">
-            PRINT TIP: Use “Save as PDF” to download.
           </div>
         </div>
       </div>
