@@ -102,8 +102,8 @@ export default function ProjectModal({
     }
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out", overwrite: "auto" } });
-    tl.to(contentEl, { opacity: 0, y: 8, duration: 0.16 }, 0);
-    tl.to(animEl, { opacity: 0, scale: 0.985, y: 10, duration: 0.22 }, 0);
+    tl.to(contentEl, { opacity: 0, duration: 0.16 }, 0);
+    tl.to(animEl, { opacity: 0, duration: 0.22 }, 0);
     tl.to(overlayEl, { autoAlpha: 0, duration: 0.2 }, 0);
     tl.eventCallback("onComplete", () => onClose());
   }, [onClose, reducedMotion]);
