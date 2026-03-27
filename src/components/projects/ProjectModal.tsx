@@ -63,15 +63,15 @@ export default function ProjectModal({
     // to avoid Chrome glitches when source cards are inside transformed/pinned sections.
     void fromRect;
     gsap.set(overlayEl, { autoAlpha: 0 });
-    gsap.set(animEl, { opacity: 0, y: 12, scale: 0.985 });
-    if (contentEl) gsap.set(contentEl, { opacity: 0, y: 10 });
+    gsap.set(animEl, { opacity: 0 });
+    if (contentEl) gsap.set(contentEl, { opacity: 0 });
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     introTlRef.current = tl;
     tl.to(overlayEl, { autoAlpha: 1, duration: 0.2 }, 0);
-    tl.to(animEl, { opacity: 1, y: 0, scale: 1, duration: 0.34 }, 0);
+    tl.to(animEl, { opacity: 1, duration: 0.28 }, 0);
     if (contentEl) {
-      tl.to(contentEl, { opacity: 1, y: 0, duration: 0.28 }, 0.08);
+      tl.to(contentEl, { opacity: 1, duration: 0.22 }, 0.06);
     }
 
     closeBtnRef.current?.focus();
