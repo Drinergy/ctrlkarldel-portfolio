@@ -112,52 +112,25 @@ export default function ProjectModal({
     setClosing(true);
     closingRef.current = true;
 
-    if (reducedMotion) {
-      onClose();
-      return;
-    }
-
-    const animEl = animRef.current;
-    const overlayEl = overlayRef.current;
-    if (!animEl || !overlayEl) {
-      onClose();
-      return;
-    }
-
-    // Measure now — centering + scroll change the rect after open; stale refs break the exit.
-    const toRect = animEl.getBoundingClientRect();
-    if (toRect.width < 1 || toRect.height < 1) {
-      onClose();
-      return;
-    }
-
     introTlRef.current?.kill();
     introTlRef.current = null;
+    const animEl = animRef.current;
+    const overlayEl = overlayRef.current;
     const contentEl = contentRef.current;
-    gsap.killTweensOf([animEl, overlayEl, contentEl].filter(Boolean));
+    const targets = [animEl, overlayEl, contentEl].filter(Boolean);
+    gsap.killTweensOf(targets);
 
-    const dx = fromRect.left - toRect.left;
-    const dy = fromRect.top - toRect.top;
-    const sx = fromRect.width / toRect.width;
-    const sy = fromRect.height / toRect.height;
+    if (reducedMotion || !animEl || !overlayEl) {
+      onClose();
+      return;
+    }
 
-    const tl = gsap.timeline({ defaults: { ease: "expo.in", overwrite: "auto" } });
-    tl.to(overlayEl, { autoAlpha: 0, duration: 0.22 });
-    tl.to(
-      animEl,
-      {
-        x: dx,
-        y: dy,
-        scaleX: sx,
-        scaleY: sy,
-        duration: 0.55,
-      },
-      "-=0.1",
-    );
-    tl.set(animEl, { clearProps: "transform" });
-    tl.set(overlayEl, { clearProps: "opacity" });
+    const tl = gsap.timeline({ defaults: { ease: "power2.out", overwrite: "auto" } });
+    tl.to(contentEl, { opacity: 0, y: 8, duration: 0.16 }, 0);
+    tl.to(animEl, { opacity: 0, scale: 0.985, y: 10, duration: 0.22 }, 0);
+    tl.to(overlayEl, { autoAlpha: 0, duration: 0.2 }, 0);
     tl.eventCallback("onComplete", () => onClose());
-  }, [fromRect, onClose, reducedMotion]);
+  }, [onClose, reducedMotion]);
 
   // Layout: lock/unlock synchronously so scroll restores before paint (avoids jank with pinned sections).
   useLayoutEffect(() => {
@@ -260,6 +233,8 @@ export default function ProjectModal({
               <button
                 ref={closeBtnRef}
                 type="button"
+                data-cursor="view"
+                data-cursor-label="Close"
                 onClick={requestClose}
                 className="shrink-0 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold tracking-wide text-foreground hover:bg-white/5 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
