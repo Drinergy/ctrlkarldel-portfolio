@@ -143,7 +143,7 @@ export default function Hero() {
           <div className="min-w-0 lg:col-span-5">
             <div
               ref={mediaRef}
-              className="relative aspect-[4/5] w-full max-md:portrait:min-h-[520px] max-md:landscape:min-h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-surface/60 max-h-[min(84svh,640px)] max-md:landscape:max-h-none lg:max-h-none"
+              className="relative aspect-[4/5] w-full max-md:portrait:min-h-[520px] overflow-hidden rounded-3xl border border-white/10 bg-surface/60 max-h-[min(84svh,640px)] landscape:max-h-[min(70svh,480px)] lg:max-h-none"
             >
               <div
                 aria-hidden="true"
@@ -175,7 +175,7 @@ export default function Hero() {
               />
 
               <div className="absolute inset-3 z-10 overflow-hidden sm:inset-5 md:inset-6">
-                <div className="h-full min-h-0 overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-3 pb-6 backdrop-blur-[3px] sm:p-5 sm:pb-8">
+                <div className="h-full min-h-0 overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-3 pb-4 backdrop-blur-[3px] sm:p-5 sm:pb-8">
                   <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/60 sm:text-[11px] sm:tracking-[0.28em]">
                     WHAT_I_BUILD
                   </div>
@@ -203,7 +203,7 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    <div className="mt-4 flex items-center justify-start gap-2 border-t border-white/10 pb-1 pt-3 font-mono text-[8px] leading-none tracking-[0.08em] text-foreground/72 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:justify-between md:gap-3 md:text-[11px] md:tracking-[0.2em]">
+                    <div className="mt-3 flex items-center justify-between gap-2 border-t border-white/10 pb-0 pt-2 font-mono text-[8px] leading-none tracking-[0.08em] text-foreground/72 sm:mt-4 sm:pt-4 sm:text-[10px] sm:tracking-[0.16em] md:text-[11px] md:tracking-[0.2em]">
                       <span className="min-w-0 whitespace-nowrap">
                         SCROLL_TO_EXPLORE
                       </span>
