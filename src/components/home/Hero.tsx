@@ -175,7 +175,7 @@ export default function Hero() {
               />
 
               <div className="absolute inset-3 z-10 overflow-hidden sm:inset-5 md:inset-6">
-                <div className="h-full min-h-0 touch-pan-y overflow-y-auto overflow-x-hidden overscroll-y-contain rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:p-5">
+                <div className="h-full min-h-0 touch-pan-y overflow-y-auto landscape:overflow-hidden overflow-x-hidden overscroll-y-contain rounded-2xl border border-white/10 bg-black/40 p-3 pb-6 backdrop-blur-[3px] [-webkit-overflow-scrolling:touch] sm:p-5 sm:pb-8">
                   <div className="font-mono text-[10px] tracking-[0.24em] text-foreground/60 sm:text-[11px] sm:tracking-[0.28em]">
                     WHAT_I_BUILD
                   </div>

@@ -166,12 +166,11 @@ export default function ProjectModal({
     const prevBodyPosition = document.body.style.position;
     const prevBodyTop = document.body.style.top;
     const prevBodyWidth = document.body.style.width;
-    const prevHtmlOverflow = document.documentElement.style.overflow;
     const prevHtmlOverscrollBehavior = document.documentElement.style.overscrollBehavior;
     const scrollY = window.scrollY;
 
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.overflow = "hidden";
+    // Do NOT set html overflow:hidden — iOS Safari uses it to block ALL child overflow-y:auto scroll contexts.
     document.documentElement.style.overscrollBehavior = "none";
     document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
@@ -182,7 +181,6 @@ export default function ProjectModal({
     }
 
     return () => {
-      document.documentElement.style.overflow = prevHtmlOverflow;
       document.documentElement.style.overscrollBehavior = prevHtmlOverscrollBehavior;
       document.body.style.overflow = prevOverflow;
       document.body.style.paddingRight = prevPaddingRight;
